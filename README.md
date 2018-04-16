@@ -1,0 +1,2 @@
+# SPO-Sneak-Peek-OSINT
+Sneak Peek OSINT is a software for search opensource inteligence content. I'm a security researcher and python developer. I created this software because I wanted study about OSINT. Sorry for my bad English, I'm from Curitiba, Paraná, Brazil. This software can be used by HR, Lawyers, Pentesters on information gathering, journalists, curious and whoever you want, SPO is opensource and free!
