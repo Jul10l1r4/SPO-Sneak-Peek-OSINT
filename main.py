@@ -111,11 +111,8 @@ def dashboard():
 +-------------------------------------------------+
 
 """
-@spo.route("/about", methods=['GET','POST'])
+@spo.route("/about")
 def aboutUS():
-
-
-
     return render_template("aboutus.html")
 
 """

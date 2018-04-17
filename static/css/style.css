@@ -16,6 +16,13 @@
 
 }
 
+.logoDashboard{
+    position: relative;
+    width:100%;
+    align:center;
+
+}
+
 
 
 .login{
@@ -42,9 +49,14 @@
 
 .error{
 
-   position: center;
    background-repeat: no-repeat;
    background-size:100%;
+   position:absolute;
+   width: 25%;
+   left:19%;
+   top:9%;
+   right:20%;
+   z-index: 1;
 
 
 }
