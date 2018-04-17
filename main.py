@@ -191,7 +191,7 @@ def insertKeys():
 |                                                 |
 +-------------------------------------------------+
 The best function on this software, because here is
-a bitcoin wallet uheuheuheu 
+a bitcoin wallet ♥ ♥ ♥ ♥ uheuheuheu 
 """
 @spo.route("/about")
 def aboutUS():
