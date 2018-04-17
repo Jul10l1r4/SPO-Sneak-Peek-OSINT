@@ -81,8 +81,10 @@ def page_not_found(e):
 @spo.route("/", methods=['GET','POST'])
 def login():
 
+    #on first access redirect to firstLogin.html
+    # return render_template("firstLogin.html")
 
-
+    #render login.html
     return render_template("login.html")
 
 """

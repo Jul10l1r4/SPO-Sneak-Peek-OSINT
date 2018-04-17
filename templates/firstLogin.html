@@ -21,19 +21,20 @@
                <i class="large material-icons">device_hub</i>
                <h6> S N E A K   P E E K   O S I N T</h6>
                <br>
+                <b>Wellcome to SPO. For first access you need create a login.</b>
             </div>
             <form action="{{ url_for('login')}}" method="POST">
                <div class="row">
                   <div class="input-field col s12 white-text ">
                      <input name="user" id="user" type="text" class="validate" title="Invalid characters" pattern="[a-zA-Z0-9\s]+$">
-                     <label class="active" for="user">User</label>
+                     <label class="active" for="user">New User</label>
                   </div>
                   <div class="input-field col s12 white-text">
                      <input name="tolken" id="password" type="password" class="validate">
                      <label class="active" for="password">Password</label>
                   </div>
                </div>
-               <button class="btn waves-effect waves-light col s12 grey darken-4" type="submit" name="action">Login</button>
+               <button class="btn waves-effect waves-light col s12 grey darken-4" type="submit" name="action">Submit</button>
             </form>
          </div>
       </div>
