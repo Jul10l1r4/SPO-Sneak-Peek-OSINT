@@ -102,6 +102,80 @@ def dashboard():
 
     return render_template("dashboard.html")
 
+"""
++-------------------------------------------------+
+|                                                 |
+|                 Investigation                   |
+|                                                 |
++-------------------------------------------------+
+
+"""
+@spo.route("/investigation")
+def investigation():
+    return render_template("investigation.html")
+
+"""
++-------------------------------------------------+
+|                                                 |
+|                 Search Servers                  |
+|                                                 |
++-------------------------------------------------+
+
+"""
+@spo.route("/searchServers")
+def searchServers():
+    return render_template("searchServers.html")
+
+"""
++-------------------------------------------------+
+|                                                 |
+|                Personal Trace                   |
+|                                                 |
++-------------------------------------------------+
+
+"""
+@spo.route("/personalTrace")
+def personalTrace():
+    return render_template("personalTrace.html")
+
+"""
++-------------------------------------------------+
+|                                                 |
+|                   About OSINT                   |
+|                                                 |
++-------------------------------------------------+
+
+"""
+@spo.route("/aboutOSINT")
+def aboutOSINT():
+    return render_template("aboutOSINT.html")
+
+"""
++-------------------------------------------------+
+|                                                 |
+|                    Manual                       |
+|                                                 |
++-------------------------------------------------+
+
+"""
+@spo.route("/manual")
+def manual():
+    return render_template("manual.html")
+
+
+"""
++-------------------------------------------------+
+|                                                 |
+|                Insert Keys                      |
+|                                                 |
++-------------------------------------------------+
+
+"""
+@spo.route("/insertKeys")
+def insertKeys():
+    return render_template("insertKeys.html")
+
+
 
 """
 +-------------------------------------------------+
