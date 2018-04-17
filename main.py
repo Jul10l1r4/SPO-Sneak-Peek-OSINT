@@ -76,7 +76,9 @@ def page_not_found(e):
 |                 Login screen                    |
 |                                                 |
 +-------------------------------------------------+
-
+Function that is responsible for managing login and 
+user creation for the first access by opening the cookie 
+session and dealing with sqli attacks ex: a ' or 1 = 1#
 """
 @spo.route("/", methods=['GET','POST'])
 def login():
@@ -93,7 +95,7 @@ def login():
 |                 User Dashboard                  |
 |                                                 |
 +-------------------------------------------------+
-
+Function that is responsible for principal page
 """
 @spo.route("/dashboard", methods=['GET','POST'])
 def dashboard():
@@ -108,7 +110,7 @@ def dashboard():
 |                 Investigation                   |
 |                                                 |
 +-------------------------------------------------+
-
+Function that is responsible for start a new investigation.
 """
 @spo.route("/investigation")
 def investigation():
@@ -120,7 +122,9 @@ def investigation():
 |                 Search Servers                  |
 |                                                 |
 +-------------------------------------------------+
-
+Function that is responsible for search a servers and services.
+Here we'll use the shodan key and others tools for search,
+and crawlers and etc.. 
 """
 @spo.route("/searchServers")
 def searchServers():
@@ -132,7 +136,9 @@ def searchServers():
 |                Personal Trace                   |
 |                                                 |
 +-------------------------------------------------+
-
+Function that is responsible for search a person, on facebook
+instagram, twitter and whatever public data allow on internet 
+about especific people.
 """
 @spo.route("/personalTrace")
 def personalTrace():
@@ -144,7 +150,7 @@ def personalTrace():
 |                   About OSINT                   |
 |                                                 |
 +-------------------------------------------------+
-
+Function about educational articles
 """
 @spo.route("/aboutOSINT")
 def aboutOSINT():
@@ -156,7 +162,7 @@ def aboutOSINT():
 |                    Manual                       |
 |                                                 |
 +-------------------------------------------------+
-
+Function for help
 """
 @spo.route("/manual")
 def manual():
@@ -169,7 +175,8 @@ def manual():
 |                Insert Keys                      |
 |                                                 |
 +-------------------------------------------------+
-
+Function that is responsible for insert a credentials
+for social media when we using for search on crawlers
 """
 @spo.route("/insertKeys")
 def insertKeys():
@@ -183,7 +190,8 @@ def insertKeys():
 |                   About US                      |
 |                                                 |
 +-------------------------------------------------+
-
+The best function on this software, because here is
+a bitcoin wallet uheuheuheu 
 """
 @spo.route("/about")
 def aboutUS():
@@ -195,7 +203,10 @@ def aboutUS():
 |                   Run SPO                       |
 |                                                 |
 +-------------------------------------------------+
-
+Function that is responsible for start SPO, on documentation
+is describled how to configure a daemon spod and execute.
+We disponibilizing a web service for SPO, send-me a email
+for talk about this!
 """
 if __name__ == '__main__':
     # spo run in 1337 port tcp
