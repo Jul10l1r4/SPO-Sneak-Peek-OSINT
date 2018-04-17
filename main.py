@@ -31,7 +31,7 @@ Contact: victordequeiroz37@gmail.com
 
 
 """
-
+from datetime import timedelta
 from flask import Flask, render_template, url_for, session, request
 
 
@@ -44,6 +44,15 @@ spo = Flask(__name__, template_folder="templates", static_folder="static")
 # but u can use spo as server, if u don't want use a mod_proxy
 # on apache for example, use this key for wsgi
 spo.secret_key = 'ˆˆß∂……å¬ßøøøø∑ßˆˆß∆˚¬˜˜≤'
+
+#for timeout session on 2 minutes
+@spo.before_request
+def make_session_permanent():
+    session.permanent = True
+    spo.permanent_session_lifetime = timedelta(minutes=2)
+
+
+
 
 """
 +-------------------------------------------------+
