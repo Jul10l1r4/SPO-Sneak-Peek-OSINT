@@ -16,6 +16,8 @@
 
 }
 
+
+
 .login{
     position: absolute;
     width: 20%;
@@ -40,9 +42,11 @@
 
 
 
-error{
+.error{
 
    position: center;
+   background-repeat: no-repeat;
+   background-size:100%;
 
 
 }

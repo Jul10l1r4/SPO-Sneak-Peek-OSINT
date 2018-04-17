@@ -32,7 +32,7 @@ Contact: victordequeiroz37@gmail.com
 
 """
 from datetime import timedelta
-from flask import Flask, render_template, url_for, session, request
+from flask import Flask, render_template, url_for, session, request, redirect
 
 
 # spo is a instance of flask,
@@ -51,6 +51,22 @@ def make_session_permanent():
     session.permanent = True
     spo.permanent_session_lifetime = timedelta(minutes=2)
 
+#for logout
+@spo.route("/exit")
+def exit():
+    session.pop('user', None)
+    return redirect(url_for("login"))
+
+#errors
+@spo.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+@spo.errorhandler(403)
+def page_not_found(e):
+    return render_template('403.html'), 403
+@spo.errorhandler(500)
+def page_not_found(e):
+    return render_template('500.html'), 500
 
 
 
