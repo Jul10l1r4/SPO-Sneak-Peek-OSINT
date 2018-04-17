@@ -19,13 +19,11 @@
 
 
 .login{
-    position: absolute;
-    width: 20%;
-    left:50%;
-    top:50%;
-    margin: auto;
-    margin-left: -160px;
-    margin-top: -290px;
+    position:absolute;
+    width: 25%;
+    left:10%;
+    top:9%;
+    right:20%;
     z-index: 1;
 
 
