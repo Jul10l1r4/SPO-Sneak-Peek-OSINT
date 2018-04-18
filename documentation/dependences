@@ -1,4 +1,5 @@
 Flask
+pymysql
 datetime
 python-whois
 shodan
