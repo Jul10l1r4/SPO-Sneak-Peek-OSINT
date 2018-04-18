@@ -1,4 +1,5 @@
 Flask
 datetime
+python-whois
 shodan
 nmap
