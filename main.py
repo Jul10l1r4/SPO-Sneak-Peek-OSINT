@@ -214,8 +214,14 @@ def manual():
 Function that is responsible for insert a credentials
 for social media when we using for search on crawlers
 """
-@spo.route("/insertKeys")
+@spo.route("/insertKeys", methods=['GET','POST'])
 def insertKeys():
+    if request.method == 'POST':
+        shodanKey = request.form.get('shodan')
+
+        return
+
+
     return render_template("insertKeys.html")
 
 

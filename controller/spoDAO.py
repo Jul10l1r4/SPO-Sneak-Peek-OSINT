@@ -37,7 +37,7 @@ class SpoDAO(object):
         password = self.passhash.hash(passwd)
         #query sql for insert user and pass
         #validate SQLI
-        if self.sqli.validatorSQLI(user) == False and self.sqli.validatorSQLI(password) == False:
+        if self.sqli.validatorSQLI(user) == False:
             sql = "insert into user_spo(login,password) values ('"+user+"','"+password+"');"
         #execute a query
         self.connection.insert(sql)
@@ -45,7 +45,7 @@ class SpoDAO(object):
     #validator for login
     def testLogin(self,user,passwd):
         #validate SQLI
-        if self.sqli.validatorSQLI(user) == False and self.sqli.validatorSQLI(passwd) == False:
+        if self.sqli.validatorSQLI(user) == False:
             #hash the password
             password = self.passhash.hash(passwd)
             #select query
@@ -54,6 +54,13 @@ class SpoDAO(object):
                 return False
             else:
                 return True
+    #insert key
+    def insertKey(self,user,key):
+        #validate SQLI
+        if self.sqli.validatorSQLI(key) == False:
+            #insert query example
+            # insert into key_api(key_value,name_key,id_user) values('qZv7Ozc4KfXRNYIqIHQCJCh5A7pRP8QZ','shodan',7);
+            sql = "insert into"
 
 
 

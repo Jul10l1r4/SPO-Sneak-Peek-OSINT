@@ -104,6 +104,43 @@
          </li>
          <div class="divider"></div>
       </ul>
+      <div class="row">
+         <div class="col s2"></div>
+         <div class="col s10">
+            <div class="card horizontal">
+               <div class="card-stacked">
+                  <div class="card-content">
+                     <h2>Insert API keys</h2>
+                     <p>
+                        For use this software, you need insert some keys and users for external APIs and social media.
+                        <br>This keys is used for search on specific services.
+                        <br><b>For example</b>;
+                        <br>For search on shodan, we need a API key, <b>if you don't insert the key</b>, this some functionalities don't working.
+                        <br>if you use a free account your search is limited
+                     </p>
+                     <a href="https://account.shodan.io/register">Click here to create an Account on Shodan</a>
+                     <br/>
+                     <form action="{{ url_for('insertKeys')}}" method="POST">
+                        <div class="row">
+                           <div class="input-field col s12 white-text ">
+                              <p>Click here to create a Shodan account</p>
+                              <input name="shodan" id="shodan" type="text" class="validate" title="Invalid characters" pattern="[a-zA-Z0-9\s]+$">
+                              <label class="active" for="shodan">Insert here your Shodan key</label>
+                           </div>
+                        </div>
+                        <button class="btn waves-effect waves-light col s12 grey darken-4" type="submit" name="action">Insert a SHODAN API KEY</button>
+                     </form>
+                  </div>
+                  <div class="card-action">
+                     <a href="#">How to buy Bitcoins?</a>
+                  </div>
+               </div>
+               <div class="card-image">
+                  <img src="{{ url_for('static', filename='img/key.png') }}">
+               </div>
+            </div>
+         </div>
+      </div>
       <div class="col s4 m4"></div>
       <div class="fixed-action-btn">
          <a class="btn-floating btn-large tooltiped red ">
@@ -111,7 +148,6 @@
          </a>
          <ul>
             <li><a href="{{ url_for('insertKeys') }}" class="btn-floating tooltipped light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Add social media keys"><i class="material-icons">vpn_key</i></a></li>
-            <li><a href="" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="Cadastrar usuário"><i class="material-icons">date_range</i></a></li>
             <li><a href="{{ url_for('exit') }}" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="exit"><i class="material-icons">move_to_inbox</i></a></li>
          </ul>
       </div>
