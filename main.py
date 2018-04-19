@@ -85,18 +85,10 @@ session and dealing with sqli attacks ex: a ' or 1 = 1#
 """
 @spo.route("/", methods=['GET','POST'])
 def login():
-    #on first access redirect to firstLogin.html
+    #on first access redirect to firstLogin
     if dao.testFirstAccess() == True:
+        return redirect('firstLogin')
 
-        if request.method == 'POST':
-            #recive user from html
-            getUser = request.form.get('user')
-            #recive password from html
-            getPasswd = str(request.form.get('password'))
-            #insert in to DB
-            dao.insertUser(getUser,getPasswd)
-
-            return render_template("firstLogin.html")
     else:
         if request.method == 'POST':
             # recive user from html
@@ -112,6 +104,21 @@ def login():
 
         #render login.html
         return render_template("login.html")
+
+#for first login
+@spo.route("/firstLogin", methods=['GET','POST'])
+def fisrtLogin():
+    if request.method == 'POST':
+        # recive user from html
+        getUser = request.form.get('user')
+        # recive password from html
+        getPasswd = str(request.form.get('password'))
+        # insert in to DB
+        dao.insertUser(getUser, getPasswd)
+
+    return render_template("firstLogin.html")
+
+
 
 """
 +-------------------------------------------------+
