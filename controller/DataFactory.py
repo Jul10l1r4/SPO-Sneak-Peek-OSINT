@@ -7,7 +7,7 @@ If fisrt access create a DB
 import pymysql
 
 
-class Connection(object):
+class DataFactory(object):
     # global information for sgbd connect
     host = 'localhost'
     user = 'japonesdafederal'
@@ -18,7 +18,7 @@ class Connection(object):
     #for insert querys
     def insert(self,sql):
         #start a connection
-        connect = pymysql.connect(self.host,self.user_sgbd,self.senha_sgbd,self.db,cursorclass=pymysql.cursors.DictCursor)
+        connect = pymysql.connect(self.host,self.user,self.password,self.db,cursorclass=pymysql.cursors.DictCursor)
         try:
             with connect.cursor() as cursor:
 
@@ -33,7 +33,7 @@ class Connection(object):
     #for select specific querys
     def select(self,sql):
         #start connection
-        connect = pymysql.connect(self.host,self.user_sgbd,self.senha_sgbd,self.db,cursorclass=pymysql.cursors.DictCursor)
+        connect = pymysql.connect(self.host,self.user,self.password,self.db,cursorclass=pymysql.cursors.DictCursor)
         try:
             with connect.cursor() as cursor:
 
@@ -46,28 +46,11 @@ class Connection(object):
 
         finally:
             connect.close()
-    #for select * query
-    def selectALL(self,sql):
-        # start connect
-        connect = pymysql.connect(self.host, self.user_sgbd, self.senha_sgbd, self.db,
-                                  cursorclass=pymysql.cursors.DictCursor)
-        try:
-            with connect.cursor() as cursor:
-
-                cursor.execute(sql)
-
-                result = cursor.fetchall()
-                return result
-
-            # exec a query
-
-        finally:
-            connect.close()
 
     # for update querys
     def update(self,sql):
         #start connect
-        connect = pymysql.connect(self.host,self.user_sgbd,self.senha_sgbd,self.db,cursorclass=pymysql.cursors.DictCursor)
+        connect = pymysql.connect(self.host,self.user,self.password,self.db,cursorclass=pymysql.cursors.DictCursor)
         try:
             with connect.cursor() as cursor:
 

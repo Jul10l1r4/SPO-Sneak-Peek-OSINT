@@ -1,6 +1,7 @@
 Flask
 pymysql
 datetime
+hashlib
 python-whois
 shodan
 nmap

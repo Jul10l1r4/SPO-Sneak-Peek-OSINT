@@ -33,7 +33,7 @@ Contact: victordequeiroz37@gmail.com
 """
 from datetime import timedelta
 from flask import Flask, render_template, url_for, session, request, redirect
-
+from controller import spoDAO
 
 # spo is a instance of flask,
 # template_folder is a directory of contents html sources from view
@@ -44,6 +44,9 @@ spo = Flask(__name__, template_folder="templates", static_folder="static")
 # but u can use spo as server, if u don't want use a mod_proxy
 # on apache for example, use this key for wsgi
 spo.secret_key = 'ˆˆß∂……å¬ßøøøø∑ßˆˆß∆˚¬˜˜≤'
+
+#instance of data access object
+dao = spoDAO.SpoDAO()
 
 #for timeout session on 2 minutes
 @spo.before_request
@@ -82,12 +85,33 @@ session and dealing with sqli attacks ex: a ' or 1 = 1#
 """
 @spo.route("/", methods=['GET','POST'])
 def login():
-
     #on first access redirect to firstLogin.html
-    # return render_template("firstLogin.html")
+    if dao.testFirstAccess() == True:
 
-    #render login.html
-    return render_template("login.html")
+        if request.method == 'POST':
+            #recive user from html
+            getUser = request.form.get('user')
+            #recive password from html
+            getPasswd = str(request.form.get('password'))
+            #insert in to DB
+            dao.insertUser(getUser,getPasswd)
+
+            return render_template("firstLogin.html")
+    else:
+        if request.method == 'POST':
+            # recive user from html
+            getUser = request.form.get('user')
+            # recive password from html
+            getPasswd = str(request.form.get('password'))
+
+            #test login
+            if dao.testLogin(getUser,getPasswd) == True:
+                return redirect('dashboard')
+            else:
+                return render_template("passwordFail.html")
+
+        #render login.html
+        return render_template("login.html")
 
 """
 +-------------------------------------------------+
