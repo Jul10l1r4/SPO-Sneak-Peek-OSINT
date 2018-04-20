@@ -104,18 +104,50 @@
          </li>
          <div class="divider"></div>
       </ul>
-      <div class="col s4 m4"></div>
-      <div class="fixed-action-btn">
-         <a class="btn-floating btn-large tooltiped red ">
-         <i class="large material-icons">settings</i>
-         </a>
-         <ul>
-            <li><a href="{{ url_for('insertKeys') }}" class="btn-floating tooltipped light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Add social media keys"><i class="material-icons">vpn_key</i></a></li>
-            <li><a href="" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="Cadastrar usuário"><i class="material-icons">date_range</i></a></li>
-            <li><a href="{{ url_for('exit') }}" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="exit"><i class="material-icons">move_to_inbox</i></a></li>
-         </ul>
-      </div>
-      </li>
+      <div class="row">
+      <div class="col s2"></div>
+      <div class="col s10">
+         <div class="card horizontal">
+            <div class="card-stacked">
+               <div class="card-content">
+                  <h2 class="center">I N V E S T I G A T I O N </h2>
+                  <h6 class="center">
+                     Select a category for investigation
+                  </h6>
+               </div>
+            </div>
+         </div>
+         <div class="col s3">
+            <div class="card">
+               <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="{{ url_for('static', filename='img/investigation.png') }}">
+               </div>
+               <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">Start a New Project<i class="material-icons right">more_vert</i></span>
+               </div>
+               <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4 center"><i class="material-icons left">format_shapes</i>  New Project<i class="material-icons right">close</i></span>
+                  <p>On a new project all data searched is saved on data base, this is ideal for after export evidences</p>
+                  <form class="col s12" action="{{ url_for('investigation')}}" method="POST">
+                     <div class="input-field col s12">
+                        <input name="nameOfProject" id="input_text" type="text" data-length="10">
+                        <label for="input_text">Name of Project</label>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="col s4 m4"></div>
+         <div class="fixed-action-btn">
+            <a class="btn-floating btn-large tooltiped red ">
+            <i class="large material-icons">settings</i>
+            </a>
+            <ul>
+               <li><a href="{{ url_for('insertKeys') }}" class="btn-floating tooltipped light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Add social media keys"><i class="material-icons">vpn_key</i></a></li>
+               <li><a href="{{ url_for('exit') }}" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="exit"><i class="material-icons">move_to_inbox</i></a></li>
+            </ul>
+         </div>
+         </li>
       </div>
       <!--jQuery materialize-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

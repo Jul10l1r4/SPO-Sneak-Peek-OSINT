@@ -154,10 +154,15 @@ def dashboard():
 +-------------------------------------------------+
 Function that is responsible for start a new investigation.
 """
-@spo.route("/investigation")
+@spo.route("/investigation", methods=['GET','POST'])
 def investigation():
     # test if is authenticated
     if session['isAuthenticated'] == True:
+
+        if request.method == 'POST':
+            #start a new project
+            nameOfProject = request.form.get('nameOfProject')
+
         return render_template("investigation.html")
 
 """
