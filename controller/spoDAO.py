@@ -54,14 +54,21 @@ class SpoDAO(object):
                 return False
             else:
                 return True
-    #insert key
-    def insertKey(self,user,key):
-        #validate SQLI
-        if self.sqli.validatorSQLI(key) == False:
-            #insert query example
-            # insert into key_api(key_value,name_key,id_user) values('qZv7Ozc4KfXRNYIqIHQCJCh5A7pRP8QZ','shodan',7);
-            sql = "insert into"
 
+    #get id user
+    def getIDUser(self,user):
+        # get id to user
+        id = self.connection.select("select id_user from user_spo where login='" + user + "'")
+        return id
+
+    #insert key
+    def insertKey(self,id,key,nameKey):
+       #validate SQLI
+        if self.sqli.validatorSQLI(key) == False and self.sqli.validatorSQLI(nameKey) == False:
+            #insert query
+            sql =  "insert into key_api(key_value,name_key,id_user) values('"+key+"','"+nameKey+"',"+str(id['id_user'])+");"
+
+            self.connection.insert(sql)
 
 
 

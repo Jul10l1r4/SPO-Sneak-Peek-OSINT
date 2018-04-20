@@ -52,7 +52,7 @@ dao = spoDAO.SpoDAO()
 @spo.before_request
 def make_session_permanent():
     session.permanent = True
-    spo.permanent_session_lifetime = timedelta(minutes=2)
+    spo.permanent_session_lifetime = timedelta(minutes=15)
 
 #for logout
 @spo.route("/exit")
@@ -98,6 +98,11 @@ def login():
 
             #test login
             if dao.testLogin(getUser,getPasswd) == True:
+                #open a session
+                session['user'] = getUser
+                session['isAuthenticated'] = True
+                session['id'] = dao.getIDUser(getUser)
+
                 return redirect('dashboard')
             else:
                 return render_template("passwordFail.html")
@@ -135,10 +140,12 @@ Function that is responsible for principal page
 """
 @spo.route("/dashboard", methods=['GET','POST'])
 def dashboard():
+    #test if is authenticated
+    if session['isAuthenticated'] == True:
 
 
 
-    return render_template("dashboard.html")
+        return render_template("dashboard.html")
 
 """
 +-------------------------------------------------+
@@ -150,7 +157,9 @@ Function that is responsible for start a new investigation.
 """
 @spo.route("/investigation")
 def investigation():
-    return render_template("investigation.html")
+    # test if is authenticated
+    if session['isAuthenticated'] == True:
+        return render_template("investigation.html")
 
 """
 +-------------------------------------------------+
@@ -164,7 +173,9 @@ and crawlers and etc..
 """
 @spo.route("/searchServers")
 def searchServers():
-    return render_template("searchServers.html")
+    # test if is authenticated
+    if session['isAuthenticated'] == True:
+        return render_template("searchServers.html")
 
 """
 +-------------------------------------------------+
@@ -178,7 +189,9 @@ about especific people.
 """
 @spo.route("/personalTrace")
 def personalTrace():
-    return render_template("personalTrace.html")
+    # test if is authenticated
+    if session['isAuthenticated'] == True:
+        return render_template("personalTrace.html")
 
 """
 +-------------------------------------------------+
@@ -190,7 +203,9 @@ Function about educational articles
 """
 @spo.route("/aboutOSINT")
 def aboutOSINT():
-    return render_template("aboutOSINT.html")
+    # test if is authenticated
+    if session['isAuthenticated'] == True:
+        return render_template("aboutOSINT.html")
 
 """
 +-------------------------------------------------+
@@ -202,7 +217,9 @@ Function for help
 """
 @spo.route("/manual")
 def manual():
-    return render_template("manual.html")
+    # test if is authenticated
+    if session['isAuthenticated'] == True:
+        return render_template("manual.html")
 
 
 """
@@ -216,13 +233,17 @@ for social media when we using for search on crawlers
 """
 @spo.route("/insertKeys", methods=['GET','POST'])
 def insertKeys():
-    if request.method == 'POST':
-        shodanKey = request.form.get('shodan')
+    # test if is authenticated
+    if session['isAuthenticated'] == True:
+        if request.method == 'POST':
+            shodanKey = request.form.get('shodan')
+            dao.insertKey(session['id'],shodanKey,"shodan")
 
-        return
 
 
-    return render_template("insertKeys.html")
+
+            return render_template("insertKeys.html")
+        return render_template("insertKeys.html")
 
 
 
@@ -237,7 +258,9 @@ a bitcoin wallet ♥ ♥ ♥ ♥ uheuheuheu
 """
 @spo.route("/about")
 def aboutUS():
-    return render_template("aboutus.html")
+    # test if is authenticated
+    if session['isAuthenticated'] == True:
+        return render_template("aboutus.html")
 
 """
 +-------------------------------------------------+
