@@ -116,7 +116,7 @@
                         <br>This keys is used for search on specific services.
                         <br><b>For example</b>;
                         <br>For search on shodan, we need a API key, <b>if you don't insert the key</b>, this some functionalities don't working.
-                        <br>if you use a free account your search is limited
+                        <br>if you use a free account your search is limited, and if you want to change the key, insert the new one.
                      </p>
                      <a href="https://account.shodan.io/register">Click here to create an Account on Shodan</a>
                      <br/>
@@ -125,6 +125,11 @@
                            <div class="input-field col s12 black-text ">
                               <input name="shodan" id="shodan" type="text" class="validate" title="Invalid characters" pattern="[a-zA-Z0-9\s]+$">
                               <label class="active" for="shodan">Insert here your Shodan key</label>
+                               {% block content%}
+                                    <p>
+                                    {{ get_flashed_messages()[0]}}
+                                    </p>
+                               {% endblock %}
                            </div>
                         </div>
                         <button class="btn waves-effect waves-light col s12 grey darken-4" type="submit" name="action">Insert a SHODAN API KEY</button>

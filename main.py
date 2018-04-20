@@ -32,7 +32,7 @@ Contact: victordequeiroz37@gmail.com
 
 """
 from datetime import timedelta
-from flask import Flask, render_template, url_for, session, request, redirect
+from flask import Flask, render_template, url_for, session, request, redirect, flash
 from controller import spoDAO
 
 # spo is a instance of flask,
@@ -102,7 +102,6 @@ def login():
                 session['user'] = getUser
                 session['isAuthenticated'] = True
                 session['id'] = dao.getIDUser(getUser)
-
                 return redirect('dashboard')
             else:
                 return render_template("passwordFail.html")
@@ -235,14 +234,24 @@ for social media when we using for search on crawlers
 def insertKeys():
     # test if is authenticated
     if session['isAuthenticated'] == True:
+        #test existent keys
+        if dao.getShodanKey(session['id']) is None:
+            pass
+        else:
+            flash('Shodan Key inserted: ' + dao.getShodanKey(session['id'])['key_value'], 'info')
+
         if request.method == 'POST':
+
             shodanKey = request.form.get('shodan')
-            dao.insertKey(session['id'],shodanKey,"shodan")
+            if dao.getShodanKey(session['id']) is None:
+                dao.insertShodanKey(session['id'],shodanKey)
+                flash('Shodan Key inserted: '+ dao.getShodanKey(session['id'])['key_value'], 'info')
+                return redirect('insertKeys')
+            else:
+                dao.updateShodanKey(session['id'],shodanKey)
+                flash('Shodan Key updated: '+ dao.getShodanKey(session['id'])['key_value'], 'info')
+                return render_template("insertKeys.html")
 
-
-
-
-            return render_template("insertKeys.html")
         return render_template("insertKeys.html")
 
 

@@ -61,15 +61,26 @@ class SpoDAO(object):
         id = self.connection.select("select id_user from user_spo where login='" + user + "'")
         return id
 
-    #insert key
-    def insertKey(self,id,key,nameKey):
+    #insert shodan key
+    def insertShodanKey(self,id,key):
        #validate SQLI
-        if self.sqli.validatorSQLI(key) == False and self.sqli.validatorSQLI(nameKey) == False:
+        if self.sqli.validatorSQLI(key) == False:
             #insert query
-            sql =  "insert into key_api(key_value,name_key,id_user) values('"+key+"','"+nameKey+"',"+str(id['id_user'])+");"
+            sql ="insert into key_api(key_value,name_key,id_user) values('"+key+"','shodan',"+str(id['id_user'])+");"
 
             self.connection.insert(sql)
 
+    #get shodan key
+    def getShodanKey(self,id):
+       sql= "select key_value from key_api where id_user="+str(id['id_user'])+";"
+       return self.connection.select(sql)
 
 
+    #update shodan key
+    def updateShodanKey(self,id,key):
+        #validate sqli
+        if self.sqli.validatorSQLI(key) == False:
+            #update query
+            sql= "update key_api set key_value='"+key+"' where id_user="+str(id['id_user'])+";"
+            self.connection.insert(sql)
 
