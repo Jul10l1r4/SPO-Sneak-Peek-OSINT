@@ -1,0 +1,8 @@
+List of API from Brazil search
++----------------------------------------------------------------------------------------+
+|Whois dns use python-whois                                                              |
++----------------------------------------------------------------------------------------+
+|For search company documentation with CNPJ                                              |
+|http://compras.dados.gov.br/fornecedores/doc/fornecedor_pj/<cnpj_something_numbers>.json|
++----------------------------------------------------------------------------------------+
+

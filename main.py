@@ -34,6 +34,8 @@ Contact: victordequeiroz37@gmail.com
 from datetime import timedelta
 from flask import Flask, render_template, url_for, session, request, redirect, flash
 from controller import spoDAO
+from controller import Whois
+from controller import CNPJ
 
 # spo is a instance of flask,
 # template_folder is a directory of contents html sources from view
@@ -47,6 +49,11 @@ spo.secret_key = 'ˆˆß∂……å¬ßøøøø∑ßˆˆß∆˚¬˜˜≤'
 
 #instance of data access object
 dao = spoDAO.SpoDAO()
+#instance of Whois
+whois = Whois.Whois()
+#instance of cnpj api
+cnpj = CNPJ.CNPJ()
+
 
 #for timeout session on 2 minutes
 @spo.before_request
@@ -162,8 +169,16 @@ def investigation():
         if request.method == 'POST':
             #start a new project
             nameOfProject = request.form.get('nameOfProject')
+            #send a informa
+            if request.form.get('domain'):
+                ownerDomainInfo = whois.owner(request.form.get('domain'))
+                domainInfo = cnpj.getCNPJ(ownerDomainInfo['ownerid'])
 
-        return render_template("investigation.html")
+                return render_template('investigation.html', ownerDomainInfo = ownerDomainInfo, domainInfo='' )
+
+        return render_template("investigation.html", ownerDomainInfo='',domainInfo='')
+
+
 
 """
 +-------------------------------------------------+
