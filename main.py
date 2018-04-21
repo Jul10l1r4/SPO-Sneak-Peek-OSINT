@@ -173,8 +173,7 @@ def investigation():
             if request.form.get('domain'):
                 ownerDomainInfo = whois.owner(request.form.get('domain'))
                 domainInfo = cnpj.getCNPJ(ownerDomainInfo['ownerid'])
-
-                return render_template('investigation.html', ownerDomainInfo = ownerDomainInfo, domainInfo='' )
+                return render_template('investigation.html', ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo )
 
         return render_template("investigation.html", ownerDomainInfo='',domainInfo='')
 

@@ -17,15 +17,112 @@ class CNPJ(object):
         no = "./-"
         for i in range(0, len(no)):
             cnpj = cnpj.replace(no[i], "")
-        # get url
-        url = "http://compras.dados.gov.br/fornecedores/doc/fornecedor_pj/" + cnpj + ".json"
 
-        # use urllib for request http and save on var
-        response = urllib.request.urlopen(url)
-        # read data
-        data = response.read()
+        #for all data
+        with urllib.request.urlopen("http://compras.dados.gov.br/fornecedores/doc/fornecedor_pj/" + cnpj + ".json") as url:
+            data_not_treated = json.loads(url.read().decode())
 
-        return data
+
+        
+        #treatment of data
+        #example of data
+        """
+        {
+            'id_ramo_negocio': 85,
+            'complemento_logradouro': None, 
+            'caixa_postal': None, 
+            'id': 208390, 
+            'nome_fantasia': 'COLEGIO OPET', 
+            'bairro': 'Rebouças', 
+            'id_natureza_juridica': 2, 
+            'razao_social': 'OPET ORGANIZACAO PARANAENSE DE ENSINO TECNICO LTDA', 
+            'id_cnae': None, 
+            'id_unidade_cadastradora': 803090, 
+            '_links': {
+                'contratos': {'title': 'Contratos deste fornecedor', 
+                    'href': '/contratos/v1/contratos?cnpj_contratada=75118406000172'
+                }, 
+                'porte_empresa': {
+                    'title': 'Porte da Empresa 5: 
+                    DEMAIS', 
+                    'href': '/fornecedores/id/porte_empresa/5'
+                }, 
+                'ramo_negocio': {
+                    'title': 'Ramo de Negócio 85: EDUCAÇÃO', 
+                    'href': '/fornecedores/id/ramo_negocio/85'
+                }, 
+                'municipio': {
+                    'title': 'Municipio 75353: Curitiba', 
+                    'href': '/fornecedores/id/municipio/75353'
+                }, 
+                'natureza_juridica': {
+                    'title': 'Natureza Jurídica 2: 
+                    SOCIEDADE EMPRESÁRIA LIMITADA', 
+                    'href': '/fornecedores/id/natureza_juridica/2'
+                }, 
+                'self': {
+                    'title': 'Fornecedor 75.118.406/0001-72: OPET ORGANIZACAO PARANAENSE DE ENSINO TECNICO LTDA', 
+                    'href': '/fornecedores/id/fornecedor_pj/75118406000172'
+                }, 
+                'ocorrencia_fornecedores': {
+                    'title': 'Ocorrências aplicadas a este fornecedor', 
+                    'href': '/fornecedores/v1/ocorrencias_fornecedores?cnpj=75118406000172'
+                }, 
+                'licitações': {
+                    'title': 'Licitações deste fornecedor', 
+                    'href': '/licitacoes/v1/licitacoes?cnpj_vencedor=75118406000172'
+                }, 
+                'uasg': {
+                    'title': 'UASG 803090: SERPRO - REGIONAL CURITIBA', 
+                    'href': '/licitacoes/id/uasg/803090'
+                }, 
+                'linhasFornecimento': {
+                    'title': 'Linhas de fornecimento deste fornecedor', 
+                    'href': '/fornecedores/v1/linhas_fornecimento?id_fornecedor=208390'
+                    }
+            },
+             
+            'ativo': True, 
+            'numero_logradouro': None, 
+            'habilitado_licitar': True, 
+            'recadastrado': False, 
+            'cep': '80230-020', 
+            'logradouro': 'Avenida iguaçu,755', 
+            'id_porte_empresa': 5, 
+            'cnpj': '75118406000172', 
+            'id_cnae2': None, 
+            'id_municipio': 75353
+        }
+
+        
+        """
+        #data treated initalization
+        data_treated = {
+            'social_name':'',
+            'fantasy_name':'',
+            'address':'',
+            'type_business':'',
+            'legal_nature':'',
+            'isActive':True,
+            'business_size':'',
+            'bidding':{'bidding_permission':True, 'public_contracts':'', 'biddings':'' }
+        }
+
+        #data treated values
+        data_treated['social_name']=data_not_treated['razao_social']
+        data_treated['fantasy_name']=data_not_treated['nome_fantasia']
+        data_treated['address']=str(data_not_treated['logradouro'])+" , "+str(data_not_treated['_links']['municipio']['title']).split(": ")[1]+"  "+str(data_not_treated['cep'])
+        data_treated['type_business']=str(data_not_treated['_links']['ramo_negocio']['title']).split(": ")[1]
+        data_treated['legal_nature']=str(data_not_treated['_links']['natureza_juridica']['title']).split(': ')[1]
+        data_treated['isActive']=data_not_treated['ativo']
+        data_treated['business_size']=str(data_not_treated['_links']['porte_empresa']['title']).split(": ")[1]
+        data_treated['bidding']['bidding_permission']=data_not_treated['habilitado_licitar']
+        data_treated['bidding']['public_contracts']="http://compras.dados.gov.br/contratos/v1/contratos?cnpj_contratada="+cnpj
+        data_treated['bidding']['biddings']="http://compras.dados.gov.br/licitacoes/v1/licitacoes?cnpj_vencedor="+cnpj
+
+
+
+        return data_treated
 
 
 

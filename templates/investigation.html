@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
    <head>
+       <!-- utf-8 -->
+       <meta charset="UTF-8">
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--URL icon-->
@@ -161,11 +164,14 @@
                             </li>
                                <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">domain</i>Information about Company</div>
-                              <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ domainInfo['razao_social'] }}</span></div>
-                              <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ domainInfo['nome_fantasia'] }}</span></div>
-                              <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ domainInfo['id_porte_empresa'] }}</span></div>
-                              <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ domainInfo['logradouro'] }}</span></div>
-                              <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ domainInfo['ramo_negocio'] }}</span></div>
+                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Social Name:</b> {{ domainInfo['social_name'] }}</span></div>
+                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Fantasy Name:</b> {{ domainInfo['fantasy_name'] }}</span></div>
+                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Legal Nature:</b> {{ domainInfo['legal_nature'] }}</span></div>
+                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Business Type:</b> {{ domainInfo['type_business'] }}</span></div>
+                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Business Size:</b> {{ domainInfo['business_size'] }}</span></div>
+                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Address:</b> {{ domainInfo['address'] }}</span></div>
+                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>CNPJ status:</b> {{ domainInfo['isActive'] }}</span></div>
+                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Bidding:</b> {{ domainInfo['bidding'] }}</span></div>
 
                             </li>
 
