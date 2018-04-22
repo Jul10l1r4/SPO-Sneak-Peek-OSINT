@@ -105,7 +105,9 @@ class CNPJ(object):
             'legal_nature':'',
             'isActive':True,
             'business_size':'',
-            'bidding':{'bidding_permission':True, 'public_contracts':'', 'biddings':'' }
+            'bidding_permission':True,
+            'public_contracts':'',
+            'biddings':''
         }
 
         #data treated values
@@ -116,9 +118,15 @@ class CNPJ(object):
         data_treated['legal_nature']=str(data_not_treated['_links']['natureza_juridica']['title']).split(': ')[1]
         data_treated['isActive']=data_not_treated['ativo']
         data_treated['business_size']=str(data_not_treated['_links']['porte_empresa']['title']).split(": ")[1]
-        data_treated['bidding']['bidding_permission']=data_not_treated['habilitado_licitar']
-        data_treated['bidding']['public_contracts']="http://compras.dados.gov.br/contratos/v1/contratos?cnpj_contratada="+cnpj
-        data_treated['bidding']['biddings']="http://compras.dados.gov.br/licitacoes/v1/licitacoes?cnpj_vencedor="+cnpj
+        data_treated['bidding_permission']=data_not_treated['habilitado_licitar']
+        if cnpj is None:
+            data_treated['public_contracts'] = ""
+        else:
+            data_treated['public_contracts']="http://compras.dados.gov.br/contratos/v1/contratos?cnpj_contratada="+cnpj
+        if cnpj is None:
+            data_treated['biddings'] = ""
+        else:
+            data_treated['biddings']="http://compras.dados.gov.br/licitacoes/v1/licitacoes?cnpj_vencedor="+cnpj
 
 
 
