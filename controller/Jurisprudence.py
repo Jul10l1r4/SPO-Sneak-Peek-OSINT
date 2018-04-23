@@ -47,7 +47,20 @@ class Jurisprudence():
         """
         # search div class "i juris" on url_dump
         result_not_treated = soup.findAll("div", {"class": "i juris"})
-        print(soup.findAll("p", {"class":"result-info"}))
+        #search number of pages on result
+        number_pages_not_treat = str(soup.findAll("p", {"class":"result-info"})).replace("<p class=\"result-info\">", "")
+        if number_pages_not_treat == "[]":
+            return ""
+        else:
+            number_pages_not_treat = number_pages_not_treat.replace("</p>", "")
+            number_pages_not_treat = number_pages_not_treat.replace("Página", "")
+            number_pages_not_treat = number_pages_not_treat.replace("resultados","")
+            number_pages_not_treat = number_pages_not_treat.replace("[ ","")
+            number_pages_not_treat = number_pages_not_treat.replace(" ]","")
+            number_pages_not_treat = number_pages_not_treat.split()
+            number_pages_treat = number_pages_not_treat[2]
+
+            print(number_pages_treat)
 
 
         # treat result_not_treated for show date of jurisprudence and link to show

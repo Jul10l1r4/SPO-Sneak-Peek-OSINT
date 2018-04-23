@@ -174,8 +174,15 @@ def investigation():
             #send a informa
             if request.form.get('domain'):
                 ownerDomainInfo = whois.owner(request.form.get('domain'))
-                domainInfo = cnpj.getCNPJ(ownerDomainInfo['ownerid'])
-                lawyer.jurisprudence(ownerDomainInfo['ownerid'])
+                if ownerDomainInfo['ownerid'] is None:
+                    domainInfo = ""
+                else:
+                    #if owner is cnpj
+                    if len(ownerDomainInfo['ownerid']) == 18:
+                        domainInfo = cnpj.getCNPJ(ownerDomainInfo['ownerid'])
+                        lawyer.jurisprudence(ownerDomainInfo['ownerid'])
+                    else:
+                        domainInfo = ''
 
 
 
