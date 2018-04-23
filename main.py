@@ -36,6 +36,7 @@ from flask import Flask, render_template, url_for, session, request, redirect, f
 from controller import spoDAO
 from controller import Whois
 from controller import CNPJ
+from controller import Jurisprudence
 
 # spo is a instance of flask,
 # template_folder is a directory of contents html sources from view
@@ -53,7 +54,8 @@ dao = spoDAO.SpoDAO()
 whois = Whois.Whois()
 #instance of cnpj api
 cnpj = CNPJ.CNPJ()
-
+#instance of jurisprudence
+lawyer = Jurisprudence.Jurisprudence()
 
 #for timeout session on 2 minutes
 @spo.before_request
@@ -173,6 +175,10 @@ def investigation():
             if request.form.get('domain'):
                 ownerDomainInfo = whois.owner(request.form.get('domain'))
                 domainInfo = cnpj.getCNPJ(ownerDomainInfo['ownerid'])
+                lawyer.jurisprudence(ownerDomainInfo['ownerid'])
+
+
+
 
                 return render_template('investigation.html', ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo )
 

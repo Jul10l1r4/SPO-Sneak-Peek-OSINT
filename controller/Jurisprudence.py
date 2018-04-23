@@ -19,9 +19,9 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 
-class Jurisprudence(object):
+class Jurisprudence():
 
-    def jurisprudence(cnpj):
+    def jurisprudence(self,cnpj):
         # replace / to %2F on cnpj
         sub = "/"
         for i in range(0, len(sub)):
@@ -49,3 +49,6 @@ class Jurisprudence(object):
         result_not_treated = soup.findAll("div", {"class": "i juris"})
 
         # treat result_not_treated for show date of jurisprudence and link to show
+
+
+        return result_not_treated
