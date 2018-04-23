@@ -3,6 +3,7 @@ __Author__ = 'Victor de Queiroz'
 """
 Class for get json on RECEITA FEDERAL of Brazil
 This API is for search data about CNPJ
+CNPJ is a Brazilian documentation about companies 
 
 """
 import urllib.request
@@ -19,9 +20,11 @@ class CNPJ(object):
             cnpj = cnpj.replace(no[i], "")
 
         #for all data
-        with urllib.request.urlopen("http://compras.dados.gov.br/fornecedores/doc/fornecedor_pj/" + cnpj + ".json") as url:
-            data_not_treated = json.loads(url.read().decode())
-
+        try:
+            with urllib.request.urlopen("http://compras.dados.gov.br/fornecedores/doc/fornecedor_pj/" + cnpj + ".json") as url:
+                 data_not_treated = json.loads(url.read().decode())
+        except:
+            data_not_treated = { 'error':True }
 
         
         #treatment of data
@@ -111,22 +114,34 @@ class CNPJ(object):
         }
 
         #data treated values
-        data_treated['social_name']=data_not_treated['razao_social']
-        data_treated['fantasy_name']=data_not_treated['nome_fantasia']
-        data_treated['address']=str(data_not_treated['logradouro'])+" , "+str(data_not_treated['_links']['municipio']['title']).split(": ")[1]+"  "+str(data_not_treated['cep'])
-        data_treated['type_business']=str(data_not_treated['_links']['ramo_negocio']['title']).split(": ")[1]
-        data_treated['legal_nature']=str(data_not_treated['_links']['natureza_juridica']['title']).split(': ')[1]
-        data_treated['isActive']=data_not_treated['ativo']
-        data_treated['business_size']=str(data_not_treated['_links']['porte_empresa']['title']).split(": ")[1]
-        data_treated['bidding_permission']=data_not_treated['habilitado_licitar']
-        if cnpj is None:
-            data_treated['public_contracts'] = ""
-        else:
-            data_treated['public_contracts']="http://compras.dados.gov.br/contratos/v1/contratos?cnpj_contratada="+cnpj
-        if cnpj is None:
+        if 'error' in data_not_treated:
+            data_treated['social_name'] = ''
+            data_treated['fantasy_name'] =''
+            data_treated['address'] = ''
+            data_treated['type_business'] =''
+            data_treated['legal_nature'] = ''
+            data_treated['isActive'] = ''
+            data_treated['business_size'] = ''
+            data_treated['bidding_permission'] = ''
+            data_treated['public_contracts'] = ''
             data_treated['biddings'] = ""
         else:
-            data_treated['biddings']="http://compras.dados.gov.br/licitacoes/v1/licitacoes?cnpj_vencedor="+cnpj
+            data_treated['social_name']=data_not_treated['razao_social']
+            data_treated['fantasy_name']=data_not_treated['nome_fantasia']
+            data_treated['address']=str(data_not_treated['logradouro'])+" , "+str(data_not_treated['_links']['municipio']['title']).split(": ")[1]+"  "+str(data_not_treated['cep'])
+            data_treated['type_business']=str(data_not_treated['_links']['ramo_negocio']['title']).split(": ")[1]
+            data_treated['legal_nature']=str(data_not_treated['_links']['natureza_juridica']['title']).split(': ')[1]
+            data_treated['isActive']=data_not_treated['ativo']
+            data_treated['business_size']=str(data_not_treated['_links']['porte_empresa']['title']).split(": ")[1]
+            data_treated['bidding_permission']=data_not_treated['habilitado_licitar']
+            if cnpj is None:
+                data_treated['public_contracts'] = ""
+            else:
+                data_treated['public_contracts']="http://compras.dados.gov.br/contratos/v1/contratos?cnpj_contratada="+cnpj
+            if cnpj is None:
+                data_treated['biddings'] = ""
+            else:
+                data_treated['biddings']="http://compras.dados.gov.br/licitacoes/v1/licitacoes?cnpj_vencedor="+cnpj
 
 
 
