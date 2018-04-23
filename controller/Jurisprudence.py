@@ -69,41 +69,91 @@ class Jurisprudence():
             links_of_pages_last = links_of_pages_last.split(";")
             last_page = links_of_pages_last[1].split("p=")
 
-
-
-
             #create a list for urls
             for i in range(int(last_page[1]) + 1):
                 if i == 0:
                     i += 1
                 links_number_pages.update({ i:"https://www.jusbrasil.com.br"+links_of_pages_last[0]+str(i)+"&amp%3B"+str(links_of_pages_last[1])})
 
-            print(links_number_pages)
 
+        if not links_of_pages_not_treated:
+            # treat result_not_treated for show date of jurisprudence and link to show
+            #initializate data_trated
+            data_treated = {}
 
+            #update data_treated with link and data_link extrated from beautifulsoup
+            for i in range(len(result_not_treated)):
+                link = str(result_not_treated[i].find_all("a"))
+                link = link.replace("<a href=\"", "")
+                link = link.split("\"")
+                link = link[0]
+                link = link.replace("[","")
+                data_link = str(result_not_treated[i].find_all("p", {"class":"info"}))
+                data_link = data_link.replace("<p class=\"info\"> ","")
+                data_link = data_link.replace(" </p>","")
+                data_link = data_link.replace("Data de publicação: ","")
+                data_link = data_link.replace("[ ","")
+                data_link = data_link.replace(" ]","")
+                if data_link in data_treated:
+                    data_treated.update({data_link+"("+str(i)+")":link})
+                data_treated.update({data_link:link})
 
+            return data_treated
+        else:
+            # treat result_not_treated for show date of jurisprudence and link to show
+            # initializate data_trated
+            data_treated = {}
 
+            # update data_treated with link and data_link extrated from beautifulsoup
+            for i in range(len(result_not_treated)):
+                link = str(result_not_treated[i].find_all("a"))
+                link = link.replace("<a href=\"", "")
+                link = link.split("\"")
+                link = link[0]
+                link = link.replace("[", "")
+                data_link = str(result_not_treated[i].find_all("p", {"class": "info"}))
+                data_link = data_link.replace("<p class=\"info\"> ", "")
+                data_link = data_link.replace(" </p>", "")
+                data_link = data_link.replace("Data de publicação: ", "")
+                data_link = data_link.replace("[ ", "")
+                data_link = data_link.replace(" ]", "")
+                if data_link in data_treated:
+                    data_treated.update({data_link + "(" + str(i) + ")": link})
+                data_treated.update({data_link: link})
 
+        for i in range(1,len(links_number_pages)):
+            # connect to jusbrasil for request a html content
+            with urllib.request.urlopen(links_number_pages[i]) as url:
+                # open html
+                url_dump = url.read()
 
-        # treat result_not_treated for show date of jurisprudence and link to show
-        #initializate data_trated
-        data_treated = {}
-        #update data_treated with link and data_link extrated from beautifulsoup
-        for i in range(len(result_not_treated)):
-            link = str(result_not_treated[i].find_all("a"))
-            link = link.replace("<a href=\"", "")
-            link = link.split("\"")
-            link = link[0]
-            link = link.replace("[","")
-            data_link = str(result_not_treated[i].find_all("p", {"class":"info"}))
-            data_link = data_link.replace("<p class=\"info\"> ","")
-            data_link = data_link.replace(" </p>","")
-            data_link = data_link.replace("Data de publicação: ","")
-            data_link = data_link.replace("[ ","")
-            data_link = data_link.replace(" ]","")
-            if data_link in data_treated:
-                data_treated.update({data_link+"("+str(i)+")":link})
-            data_treated.update({data_link:link})
+            # instance of beautifulsoup
+            soup = BeautifulSoup(url_dump, "lxml")
 
+            # search div class "i juris" on url_dump
+            result_not_treated = soup.findAll("div", {"class": "i juris"})
+
+            # treat result_not_treated for show date of jurisprudence and link to show
+            # initializate data_trated
+            data_treated = {}
+
+            # update data_treated with link and data_link extrated from beautifulsoup
+            for i in range(len(result_not_treated)):
+                link = str(result_not_treated[i].find_all("a"))
+                link = link.replace("<a href=\"", "")
+                link = link.split("\"")
+                link = link[0]
+                link = link.replace("[", "")
+                data_link = str(result_not_treated[i].find_all("p", {"class": "info"}))
+                data_link = data_link.replace("<p class=\"info\"> ", "")
+                data_link = data_link.replace(" </p>", "")
+                data_link = data_link.replace("Data de publicação: ", "")
+                data_link = data_link.replace("[ ", "")
+                data_link = data_link.replace(" ]", "")
+                if data_link in data_treated:
+                    data_treated.update({data_link + "(" + str(i) + ")": link})
+                data_treated.update({data_link: link})
+
+            return data_treated
 
         return data_treated
