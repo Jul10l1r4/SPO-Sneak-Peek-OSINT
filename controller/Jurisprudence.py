@@ -48,7 +48,23 @@ class Jurisprudence():
         # search div class "i juris" on url_dump
         result_not_treated = soup.findAll("div", {"class": "i juris"})
 
-        # treat result_not_treated for show date of jurisprudence and link to show
 
+
+        # treat result_not_treated for show date of jurisprudence and link to show
+        #teste = result_not_treated.find_all('href')
+        data_treated = {}
+
+        for i in range(len(result_not_treated)):
+            link = str(result_not_treated[i].find_all("a"))
+            link = link.replace("<a href=\"", "")
+            link = link.replace("\">", "")
+            link = link.replace("<a/>", "")
+            data_link = str(result_not_treated[i].find_all("p", {"class":"info"}))
+            data_link = data_link.replace("<p class=\"info\"> ","")
+            data_link = data_link.replace(" </p>","")
+            data_link = data_link.replace("Data de publicação: ","")
+            data_treated.update({data_link:link})
+
+        print(data_treated)
 
         return result_not_treated
