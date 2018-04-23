@@ -47,20 +47,42 @@ class Jurisprudence():
         """
         # search div class "i juris" on url_dump
         result_not_treated = soup.findAll("div", {"class": "i juris"})
-        #search number of pages on result
-        number_pages_not_treat = str(soup.findAll("p", {"class":"result-info"})).replace("<p class=\"result-info\">", "")
-        if number_pages_not_treat == "[]":
-            return ""
-        else:
-            number_pages_not_treat = number_pages_not_treat.replace("</p>", "")
-            number_pages_not_treat = number_pages_not_treat.replace("Página", "")
-            number_pages_not_treat = number_pages_not_treat.replace("resultados","")
-            number_pages_not_treat = number_pages_not_treat.replace("[ ","")
-            number_pages_not_treat = number_pages_not_treat.replace(" ]","")
-            number_pages_not_treat = number_pages_not_treat.split()
-            number_pages_treat = number_pages_not_treat[2]
 
-            print(number_pages_treat)
+        #search number of pages on result and create a links for crawler
+        links_of_pages_not_treated = soup.findAll("a", {"class":"number"})
+        if links_of_pages_not_treated:
+            #initialize link list
+            links_number_pages = {}
+            #get last page
+            number = len(links_of_pages_not_treated)
+            links_of_pages_not_treated = links_of_pages_not_treated[number - 1]
+            links_of_pages_last = str(links_of_pages_not_treated).replace("<a class=\"number\"","")
+            links_of_pages_last = links_of_pages_last.replace("data-filter-name=\"page\"","")
+            links_of_pages_last = links_of_pages_last.replace("data-filter-value=\"","")
+            links_of_pages_last = links_of_pages_last.replace("rel=\"nofollow\">","")
+            links_of_pages_last = links_of_pages_last.replace("</a>","")
+            links_of_pages_last = links_of_pages_last.replace("\"","")
+            links_of_pages_last = links_of_pages_last.split()
+            links_of_pages_last = links_of_pages_last[1]
+            links_of_pages_last = links_of_pages_last.replace("href=","")
+            links_of_pages_last = links_of_pages_last.replace("&amp","&p=")
+            links_of_pages_last = links_of_pages_last.split(";")
+            last_page = links_of_pages_last[1].split("p=")
+
+
+
+
+            #create a list for urls
+            for i in range(int(last_page[1]) + 1):
+                if i == 0:
+                    i += 1
+                links_number_pages.update({ i:"https://www.jusbrasil.com.br"+links_of_pages_last[0]+str(i)+"&amp%3B"+str(links_of_pages_last[1])})
+
+            print(links_number_pages)
+
+
+
+
 
 
         # treat result_not_treated for show date of jurisprudence and link to show
