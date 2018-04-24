@@ -5,4 +5,6 @@ List of API from Brazil search
 |For search company documentation with CNPJ                                              |
 |http://compras.dados.gov.br/fornecedores/doc/fornecedor_pj/<cnpj_something_numbers>.json|
 +----------------------------------------------------------------------------------------+
-
+|For research process and jurisprudence I created a crawler for extract data from:       |
+|http://jusbrasil.com.br the crawler take process data and index                         |
++----------------------------------------------------------------------------------------+
