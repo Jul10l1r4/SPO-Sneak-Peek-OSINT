@@ -173,24 +173,27 @@ def investigation():
             nameOfProject = request.form.get('nameOfProject')
             #send a informa
             if request.form.get('domain'):
+                #get whois info
                 ownerDomainInfo = whois.owner(request.form.get('domain'))
                 if ownerDomainInfo['ownerid'] is None:
                     domainInfo = ""
                 else:
                     #if owner is cnpj
                     if len(ownerDomainInfo['ownerid']) == 18:
+                        #get cnpj info
                         domainInfo = cnpj.getCNPJ(ownerDomainInfo['ownerid'])
-                        lawyer.jurisprudence(ownerDomainInfo['ownerid'])
-                        print(lawyer)
+                        #get process info
+                        process = lawyer.jurisprudence(ownerDomainInfo['ownerid'])
+
                     else:
                         domainInfo = ''
 
 
 
 
-                return render_template('investigation.html', ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo )
+                return render_template('investigation.html', ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo, jurisprudence=process )
 
-        return render_template("investigation.html", ownerDomainInfo='',domainInfo='')
+        return render_template("investigation.html", ownerDomainInfo='',domainInfo='', jurisprudence="")
 
 
 

@@ -140,13 +140,13 @@
                </div>
             </div>
          </div>
-          <div class="col s3 blue-grey darken-4 white-text">
+          <div class="col s9 blue-grey darken-4 white-text">
 
                   <div class="card-content blue-grey darken-4 white-text">
                      <p>
                      <h4><i class="material-icons">language</i> Domain Address Information</h4>
                      <form action="{{ url_for('investigation')}}" method="POST">
-                        <label for="domain">Insert the Domain here: example.com</label>
+                        <label for="domain">Insert the Domain here: example.com and wait SPO crawlers search information, if you want save a information data on database exportable create a new project. if the information is null, it is because the company does not have a register on biddings.</label>
                         <input name="domain" id="domain" type="text">
                         <div>
                            <ul class="collapsible blue-grey darken-4 white-text">
@@ -176,6 +176,13 @@
                                    <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Bidding Permission:</b><br>{{ domainInfo['bidding_permission'] }}</span></div>
 
                             </li>
+                                <li>
+                              <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">domain</i>Information about Company Process and Jurisprudence</div>
+                                   {% for i in jurisprudence %}
+                                        <div class="collapsible-body blue-grey darken-4 white-text"><span><b class="blue-text">{{ i }}:  </b>{{ jurisprudence[i] }}</span></div>
+                                    {% endfor %}
+                            </li>
+
 
                           </ul>
                         </div>
@@ -183,7 +190,11 @@
                   </form>
                   </p>
                </div>
-            </div>
+
+
+
+      </div>
+
 
 
 
