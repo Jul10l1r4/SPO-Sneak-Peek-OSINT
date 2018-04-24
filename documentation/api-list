@@ -8,3 +8,13 @@ List of API from Brazil search
 |For research process and jurisprudence I created a crawler for extract data from:       |
 |http://jusbrasil.com.br the crawler take process data and index                         |
 +----------------------------------------------------------------------------------------+
+|For get proof of state registration I used a Receita Federal data                       |
+|http://www.receita.fazenda.gov.br                                                       |
+|/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Vstatus.asp?origem=comprovante&cnpj=             |
++----------------------------------------------------------------------------------------+
+|For research open social capital I used a Receita Federal data                          |
+|http://www.receita.fazenda.gov.br                                                       |
+|/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_qsa.asp?origem=comprovante&cnpj=                 |
++----------------------------------------------------------------------------------------+
+
+

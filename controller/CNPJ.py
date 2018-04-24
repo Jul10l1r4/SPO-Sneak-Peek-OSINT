@@ -148,4 +148,12 @@ class CNPJ(object):
         return data_treated
 
 
+    def treat(self,cnpj):
+        # prepare string
+        no = "./-"
+        for i in range(0, len(no)):
+            cnpj = cnpj.replace(no[i], "")
+
+        return cnpj
+
 

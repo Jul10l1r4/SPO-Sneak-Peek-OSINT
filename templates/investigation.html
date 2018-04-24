@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
    <head>
-       <!-- utf-8 -->
-       <meta charset="UTF-8">
+      <!-- utf-8 -->
+      <meta charset="UTF-8">
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--URL icon-->
@@ -108,116 +107,115 @@
          <div class="divider"></div>
       </ul>
       <div class="row">
-      <div class="col s2"></div>
-      <div class="col s10">
-         <div class="card horizontal">
-            <div class="card-stacked">
-               <div class="card-content">
-                  <h2 class="center">I N V E S T I G A T I O N </h2>
-                  <h6 class="center">
-                     Select a single quick category for investigation or start a new project for save data on DB.
-                  </h6>
+         <div class="col s2"></div>
+         <div class="col s10">
+            <div class="card horizontal">
+               <div class="card-stacked">
+                  <div class="card-content">
+                     <h2 class="center">I N V E S T I G A T I O N </h2>
+                     <h6 class="center">
+                        Select a single quick category for investigation or start a new project for save data on DB.
+                     </h6>
+                  </div>
                </div>
             </div>
-         </div>
-         <div class="col s3">
-            <div class="card">
-               <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="{{ url_for('static', filename='img/investigation.png') }}">
-               </div>
-               <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">Start a New Project<i class="material-icons right">more_vert</i></span>
-               </div>
-               <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4 center"><i class="material-icons left">format_shapes</i>  New Project<i class="material-icons right">close</i></span>
-                  <p>On a new project all data searched is saved on data base, this is ideal for after export evidences</p>
-                  <form class="col s12" action="{{ url_for('investigation')}}" method="POST">
-                     <div class="input-field col s12">
-                        <input name="nameOfProject" id="input_text" type="text" data-length="10">
-                        <label for="input_text">Name of Project</label>
-                     </div>
-                  </form>
+            <div class="col s3">
+               <div class="card">
+                  <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="{{ url_for('static', filename='img/investigation.png') }}">
+                  </div>
+                  <div class="card-content">
+                     <span class="card-title activator grey-text text-darken-4">Start a New Project<i class="material-icons right">more_vert</i></span>
+                  </div>
+                  <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4 center"><i class="material-icons left">format_shapes</i>  New Project<i class="material-icons right">close</i></span>
+                     <p>On a new project all data searched is saved on data base, this is ideal for after export evidences</p>
+                     <form class="col s12" action="{{ url_for('investigation')}}" method="POST">
+                        <div class="input-field col s12">
+                           <input name="nameOfProject" id="input_text" type="text" data-length="10">
+                           <label for="input_text">Name of Project</label>
+                        </div>
+                     </form>
+                  </div>
                </div>
             </div>
-         </div>
-          <div class="col s9 blue-grey darken-4 white-text">
-
-                  <div class="card-content blue-grey darken-4 white-text">
-                     <p>
-                     <h4><i class="material-icons">language</i> Domain Address Information</h4>
-                     <form action="{{ url_for('investigation')}}" method="POST">
-                        <label for="domain">Insert the Domain here: example.com and wait SPO crawlers search information, if you want save a information data on database exportable create a new project. if the information is null, it is because the company does not have a register on biddings.</label>
-                        <input name="domain" id="domain" type="text">
-                        <div>
-                           <ul class="collapsible blue-grey darken-4 white-text">
-                            <li>
+            <div class="col s9 blue-grey darken-4 white-text">
+               <div class="card-content blue-grey darken-4 white-text">
+                  <p>
+                  <h4><i class="material-icons">language</i> Domain Address Information</h4>
+                  <form action="{{ url_for('investigation')}}" method="POST">
+                     <label for="domain">Insert the Domain here: example.com and wait SPO crawlers search information, if you want save a information data on database exportable create a new project. if the information is null, it is because the company does not have a register on biddings.</label>
+                     <input name="domain" id="domain" type="text">
+                     <div>
+                        <ul class="collapsible blue-grey darken-4 white-text">
+                           <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">face</i>Owner name</div>
                               <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ ownerDomainInfo['owner'] }}</span></div>
-                            </li>
-                            <li>
+                           </li>
+                           <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">email</i>Owner Emails</div>
                               <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ ownerDomainInfo['owneremail']}}</span></div>
-                            </li>
-                            <li>
+                           </li>
+                           <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">assignment_ind</i>Owner ID</div>
                               <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ ownerDomainInfo['ownerid'] }}</span></div>
-                            </li>
-                               <li>
+                           </li>
+                           <li>
+                              <div class="collapsible-header blue-grey darken-4 white-text modal-trigger" href="#proof"><i class="material-icons">class</i>Show proof of state registration</div>
+                           </li>
+                           <li>
+                              <div class="collapsible-header blue-grey darken-4 white-text modal-trigger" href="#capital"><i class="material-icons">attach_money</i>Show open corporate capital</div>
+                           </li>
+                           <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">domain</i>Information about Company</div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Social Name:</b> {{ domainInfo['social_name'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Fantasy Name:</b> {{ domainInfo['fantasy_name'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Legal Nature:</b> {{ domainInfo['legal_nature'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Business Type:</b> {{ domainInfo['type_business'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Business Size:</b> {{ domainInfo['business_size'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Address:</b> {{ domainInfo['address'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>CNPJ status:</b> {{ domainInfo['isActive'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Biddings:</b><br>{{ domainInfo['biddings'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Public Contracts:</b><br>{{ domainInfo['public_contracts'] }}</span></div>
-                                   <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Bidding Permission:</b><br>{{ domainInfo['bidding_permission'] }}</span></div>
-
-                            </li>
-                                <li>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Social Name:</b> {{ domainInfo['social_name'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Fantasy Name:</b> {{ domainInfo['fantasy_name'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Legal Nature:</b> {{ domainInfo['legal_nature'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Business Type:</b> {{ domainInfo['type_business'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Business Size:</b> {{ domainInfo['business_size'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Address:</b> {{ domainInfo['address'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>CNPJ status:</b> {{ domainInfo['isActive'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Biddings:</b><br>{{ domainInfo['biddings'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Public Contracts:</b><br>{{ domainInfo['public_contracts'] }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b>Bidding Permission:</b><br>{{ domainInfo['bidding_permission'] }}</span></div>
+                           </li>
+                           <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">account_balance</i>Information about Company Process and Jurisprudence</div>
-                                   {% for i in jurisprudence %}
-                                        <div class="collapsible-body blue-grey darken-4 white-text"><span><b class="blue-text">{{ i }}:  </b>{{ jurisprudence[i] }}</span></div>
-                                    {% endfor %}
-                            </li>
-
-
-                          </ul>
-                        </div>
-                  </div>
-                  </form>
-                  </p>
+                              {% for i in jurisprudence %}
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span><b class="blue-text">{{ i }}:  </b>{{ jurisprudence[i] }}</span></div>
+                              {% endfor %}
+                           </li>
+                        </ul>
+                     </div>
                </div>
-
-
-
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-         <div class="col s4 m4"></div>
-         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large tooltiped red ">
-            <i class="large material-icons">settings</i>
-            </a>
-            <ul>
-               <li><a href="{{ url_for('insertKeys') }}" class="btn-floating tooltipped light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Add social media keys"><i class="material-icons">vpn_key</i></a></li>
-               <li><a href="{{ url_for('exit') }}" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="exit"><i class="material-icons">move_to_inbox</i></a></li>
-            </ul>
+               </form>
+               </p>
+            </div>
          </div>
-         </li>
+         <!-- View  Social Capital and Proof of state registration Structure -->
+         <div id="proof" class="modal">
+            <div class="modal-content">
+               <p>Please resolve capicha, this is a Receita Federal from Brazil website</p>
+               <iframe src="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Vstatus.asp?origem=comprovante&cnpj={{ cnpj }}" width="100%" height="100%"></iframe>
+            </div>
+         </div>
+         <!-- View  Social Capital and Proof of state registration Structure -->
+         <div id="capital" class="modal">
+            <p>Please resolve capicha, this is a Receita Federal from Brazil website</p>
+            <iframe src="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_qsa.asp?origem=comprovante&cnpj={{ cnpj }}" width="100%" height="100%"></iframe>
+         </div>
+      </div>
+      <div class="col s4 m4"></div>
+      <div class="fixed-action-btn">
+         <a class="btn-floating btn-large tooltiped red ">
+         <i class="large material-icons">settings</i>
+         </a>
+         <ul>
+            <li><a href="{{ url_for('insertKeys') }}" class="btn-floating tooltipped light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Add social media keys"><i class="material-icons">vpn_key</i></a></li>
+            <li><a href="{{ url_for('exit') }}" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="exit"><i class="material-icons">move_to_inbox</i></a></li>
+         </ul>
+      </div>
+      </li>
       </div>
       <!--jQuery materialize-->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

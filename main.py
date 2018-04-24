@@ -184,16 +184,17 @@ def investigation():
                         domainInfo = cnpj.getCNPJ(ownerDomainInfo['ownerid'])
                         #get process info
                         process = lawyer.jurisprudence(ownerDomainInfo['ownerid'])
-
+                        #treat cnpj
+                        TreatCNPJ = cnpj.treat(ownerDomainInfo['ownerid'])
                     else:
                         domainInfo = ''
 
 
 
 
-                return render_template('investigation.html', ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo, jurisprudence=process )
+                return render_template('investigation.html', cnpj=TreatCNPJ, ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo, jurisprudence=process )
 
-        return render_template("investigation.html", ownerDomainInfo='',domainInfo='', jurisprudence="")
+        return render_template("investigation.html", ownerDomainInfo='',domainInfo='', jurisprudence="", cnpj="" )
 
 
 
