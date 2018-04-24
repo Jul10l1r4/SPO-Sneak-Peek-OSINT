@@ -181,6 +181,7 @@ def investigation():
                     if len(ownerDomainInfo['ownerid']) == 18:
                         domainInfo = cnpj.getCNPJ(ownerDomainInfo['ownerid'])
                         lawyer.jurisprudence(ownerDomainInfo['ownerid'])
+                        print(lawyer)
                     else:
                         domainInfo = ''
 
