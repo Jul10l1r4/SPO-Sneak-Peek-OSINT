@@ -105,41 +105,25 @@
             </ul>
          </li>
          <div class="divider"></div>
+          <li>
+              <a class="waves-effect waves-light btn-small grey-text modal-trigger" href="#new">NEW PROJECT<i class="material-icons">add</i></a>
+
+          </li>
       </ul>
       <div class="row">
-         <div class="col s2"></div>
-         <div class="col s10">
+         <div class="col s9 offset-s3">
             <div class="card horizontal">
                <div class="card-stacked">
                   <div class="card-content">
-                     <h2 class="center">I N V E S T I G A T I O N </h2>
+                      <h4 class="center">C O M P A N Y  - I N V E S T I G A T I O N </h4>
                      <h6 class="center">
                         Select a single quick category for investigation or start a new project for save data on DB.
                      </h6>
+
                   </div>
                </div>
             </div>
-            <div class="col s3">
-               <div class="card">
-                  <div class="card-image waves-effect waves-block waves-light">
-                     <img class="activator" src="{{ url_for('static', filename='img/investigation.png') }}">
-                  </div>
-                  <div class="card-content">
-                     <span class="card-title activator grey-text text-darken-4">Start a New Project<i class="material-icons right">more_vert</i></span>
-                  </div>
-                  <div class="card-reveal">
-                     <span class="card-title grey-text text-darken-4 center"><i class="material-icons left">format_shapes</i>  New Project<i class="material-icons right">close</i></span>
-                     <p>On a new project all data searched is saved on data base, this is ideal for after export evidences</p>
-                     <form class="col s12" action="{{ url_for('investigation')}}" method="POST">
-                        <div class="input-field col s12">
-                           <input name="nameOfProject" id="input_text" type="text" data-length="10">
-                           <label for="input_text">Name of Project</label>
-                        </div>
-                     </form>
-                  </div>
-               </div>
-            </div>
-            <div class="col s9 blue-grey darken-4 white-text">
+            <div class="col s12 blue-grey darken-4 white-text">
                <div class="card-content blue-grey darken-4 white-text">
                   <p>
                   <h4><i class="material-icons">language</i> Domain Address Information</h4>
@@ -190,7 +174,6 @@
                </div>
                </form>
                </p>
-            </div>
          </div>
          <!-- View  Social Capital and Proof of state registration Structure -->
          <div id="proof" class="modal">
@@ -199,6 +182,24 @@
                <iframe src="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Vstatus.asp?origem=comprovante&cnpj={{ cnpj }}" width="100%" height="100%"></iframe>
             </div>
          </div>
+             <!-- New Project -->
+               <div id="new" class="modal card">
+                  <div class="card-image waves-effect waves-block waves-light">
+                     <img class="activator" src="{{ url_for('static', filename='img/investigation.png') }}">
+                  </div>
+                  <div class="card-content">
+                     <span class="card-title activator grey-text text-darken-4">Start a New Project<i class="material-icons right">more_vert</i></span>
+                  </div>
+                  <div class="card-reveal">
+                     <span class="card-title grey-text text-darken-4 center"><i class="material-icons left">format_shapes</i>  New Project<i class="material-icons right">close</i></span>
+                     <p>On a new project all data searched is saved on data base, this is ideal for after export evidences</p>
+                     <form class="col s12" action="{{ url_for('investigation')}}" method="POST">
+                        <div class="input-field col s12">
+                           <input name="nameOfProject" id="input_text" type="text" data-length="10">
+                           <label for="input_text">Name of Project</label>
+                        </div>
+                     </form>
+                  </div>
          <!-- View  Social Capital and Proof of state registration Structure -->
          <div id="capital" class="modal">
             <p>Please resolve capicha, this is a Receita Federal from Brazil website</p>
