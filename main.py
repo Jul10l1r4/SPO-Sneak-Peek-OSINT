@@ -173,8 +173,11 @@ def investigation():
             nameOfProject = request.form.get('nameOfProject')
             #send a informa
             if request.form.get('domain'):
+                #getDomain
+                domain_name = request.form.get('domain')
                 #get whois info
-                ownerDomainInfo = whois.owner(request.form.get('domain'))
+                ownerDomainInfo = whois.owner(domain_name)
+
                 if ownerDomainInfo['ownerid'] is None:
                     domainInfo = ""
                 else:
@@ -192,9 +195,9 @@ def investigation():
 
 
 
-                return render_template('investigation.html', cnpj=TreatCNPJ, ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo, jurisprudence=process )
+                return render_template('investigation.html', domain_name=domain_name, cnpj=TreatCNPJ, ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo, jurisprudence=process )
 
-        return render_template("investigation.html", ownerDomainInfo='',domainInfo='', jurisprudence="", cnpj="" )
+        return render_template("investigation.html", domain_name='', ownerDomainInfo='',domainInfo='', jurisprudence="", cnpj="" )
 
 
 
