@@ -16,5 +16,9 @@ List of API from Brazil search
 |http://www.receita.fazenda.gov.br                                                       |
 |/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_qsa.asp?origem=comprovante&cnpj=                 |
 +----------------------------------------------------------------------------------------+
-
+|For links connection like a maltego, I used a TreatCrowd API                            |
+|https://github.com/AlienVault-OTX/ApiV2/blob/master/PythonExample/threatcrowd.py        |
+|And graphical links I used a iframe on:                                                 |
+|https://www.threatcrowd.org/domain.php?domain=                                          |
++----------------------------------------------------------------------------------------+
 

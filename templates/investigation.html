@@ -147,8 +147,8 @@
                            <li>
                               <div class="collapsible-header blue-grey darken-4 white-text modal-trigger" href="#proof"><i class="material-icons">class</i>Show proof of state registration</div>
                            </li>
-                           <li>
-                              <div class="collapsible-header blue-grey darken-4 white-text modal-trigger" href="#capital"><i class="material-icons">attach_money</i>Show open corporate capital</div>
+                            <li>
+                              <div class="collapsible-header blue-grey darken-4 white-text modal-trigger" href="#link"><i class="material-icons">center_focus_strong</i>Show links of domain</div>
                            </li>
                            <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">domain</i>Information about Company</div>
@@ -177,10 +177,11 @@
          </div>
          <!-- View  Social Capital and Proof of state registration Structure -->
          <div id="proof" class="modal">
-            <div class="modal-content">
-               <p>Please resolve capicha, this is a Receita Federal from Brazil website</p>
-               <iframe src="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Vstatus.asp?origem=comprovante&cnpj={{ cnpj }}" width="100%" height="100%"></iframe>
-            </div>
+               <iframe class="modal-content" src="http://www.receita.fazenda.gov.br/PessoaJuridica/CNPJ/cnpjreva/Cnpjreva_Vstatus.asp?origem=comprovante&cnpj={{ cnpj }}" frameborder="0" width="800px" height="600px"></iframe>
+         </div>
+             <!-- View links of domain -->
+         <div id="link" class="modal">
+               <iframe class="modal-content" src="https://www.threatcrowd.org/graphHtml.php?domain=" frameborder="0" width="800px" height="600px"></iframe>
          </div>
              <!-- New Project -->
                <div id="new" class="modal card">
