@@ -37,6 +37,7 @@ from controller import spoDAO
 from controller import Whois
 from controller import CNPJ
 from controller import Jurisprudence
+from controller import Subdomain
 
 # spo is a instance of flask,
 # template_folder is a directory of contents html sources from view
@@ -56,6 +57,8 @@ whois = Whois.Whois()
 cnpj = CNPJ.CNPJ()
 #instance of jurisprudence
 lawyer = Jurisprudence.Jurisprudence()
+#instance of subdomains
+subdomain = Subdomain.Subdomains()
 
 #for timeout session on 2 minutes
 @spo.before_request
@@ -189,15 +192,16 @@ def investigation():
                         process = lawyer.jurisprudence(ownerDomainInfo['ownerid'])
                         #treat cnpj
                         TreatCNPJ = cnpj.treat(ownerDomainInfo['ownerid'])
+                        subdomains = subdomain.getSubdomains(domain_name)
                     else:
                         domainInfo = ''
 
 
 
 
-                return render_template('investigation.html', domain_name=domain_name, cnpj=TreatCNPJ, ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo, jurisprudence=process )
+                return render_template('investigation.html', subdomain=subdomains, domain_name=domain_name, cnpj=TreatCNPJ, ownerDomainInfo = ownerDomainInfo, domainInfo=domainInfo, jurisprudence=process )
 
-        return render_template("investigation.html", domain_name='', ownerDomainInfo='',domainInfo='', jurisprudence="", cnpj="" )
+        return render_template("investigation.html", subdomain='', domain_name='', ownerDomainInfo='',domainInfo='', jurisprudence="", cnpj="" )
 
 
 

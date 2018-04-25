@@ -2,6 +2,7 @@ Flask
 pymysql
 datetime
 urllib
+requests
 beautifulsoup4
 lxml
 hashlib
