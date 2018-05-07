@@ -145,10 +145,10 @@
                               <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ ownerDomainInfo['ownerid'] }}</span></div>
                            </li>
                            <li>
-                              <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">assignment_ind</i>Subdomains</div>
-                              {% for i in subdomain %}
-                               <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ i }}</span></div>
-                               {% endfor %}
+                              <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">grain</i>Subdomains</div>
+
+                               <div class="collapsible-body blue-grey darken-4 white-text">{% if subdomain %}{% for i in subdomain %}<span>{{ i }}<br></span>{% endfor %}{% endif %}</div>
+
                            </li>
                            <li>
                               <div class="collapsible-header blue-grey darken-4 white-text modal-trigger" href="#proof"><i class="material-icons">class</i>Show proof of state registration</div>

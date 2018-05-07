@@ -31,7 +31,7 @@ class Jurisprudence(object):
             url="https://www.jusbrasil.com.br/jurisprudencia/busca?q=" + cnpj,
             data=None,
             headers={
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+                'User-Agent': 'SPO - sneak peak OSINT https://github.com/victordequeiroz/SPO-Sneak-Peek-OSINT'
             }
         )
 
