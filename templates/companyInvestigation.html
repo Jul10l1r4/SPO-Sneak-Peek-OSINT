@@ -44,8 +44,11 @@
                      <i class="material-icons">visibility</i>
                      Investigation
                   </div>
+                 <div class="collapsible-body">
+                     <a href="{{ url_for('companyInvestigation') }}" class="btn-flat tooltipped" data-position="right" data-delay="50" data-tooltip="Click here to start a new Company investigation, this is the first step for your investigation about this company.">Company Investigation</a>
+                  </div>
                   <div class="collapsible-body">
-                     <a href="{{ url_for('investigation') }}" class="btn-flat tooltipped" data-position="right" data-delay="50" data-tooltip="Click here to start a new investigation, this is the first step. Here you can start a project">Start a new investigation</a>
+                     <a href="{{ url_for('personalInvestigation') }}" class="btn-flat tooltipped" data-position="right" data-delay="50" data-tooltip="Click here to start a new personal investigation, this is the first step for your personal investigation.">Personal Investigation</a>
                   </div>
                </li>
                <li>
@@ -127,7 +130,7 @@
                <div class="card-content blue-grey darken-4 white-text">
                   <p>
                   <h4><i class="material-icons">language</i> Domain Address Information</h4>
-                  <form action="{{ url_for('investigation')}}" method="POST">
+                  <form action="{{ url_for('companyInvestigation')}}" method="POST">
                      <label for="domain">Insert the Domain here: example.com and wait SPO crawlers search information, if you want save a information data on database exportable create a new project. if the information is null, it is because the company does not have a register on biddings.</label>
                      <input name="domain" id="domain" type="text">
                      <div>
@@ -200,7 +203,7 @@
                   <div class="card-reveal">
                      <span class="card-title grey-text text-darken-4 center"><i class="material-icons left">format_shapes</i>  New Project<i class="material-icons right">close</i></span>
                      <p>On a new project all data searched is saved on data base, this is ideal for after export evidences</p>
-                     <form class="col s12" action="{{ url_for('investigation')}}" method="POST">
+                     <form class="col s12" action="{{ url_for('companyInvestigation')}}" method="POST">
                         <div class="input-field col s12">
                            <input name="nameOfProject" id="input_text" type="text" data-length="10">
                            <label for="input_text">Name of Project</label>
