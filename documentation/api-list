@@ -21,4 +21,8 @@ List of API from Brazil search
 |And graphical links I used a iframe on:                                                 |
 |https://www.threatcrowd.org/domain.php?domain=                                          |
 +----------------------------------------------------------------------------------------+
+|For search more subdomains we used Virus Total                                          |
+|https://developers.virustotal.com/v2.0/reference#api-responses                          |
+|witch api key: 086176161b18ee281fd2fecb9875545f87557f40b43579cd13034d71a39b63ad         |
++----------------------------------------------------------------------------------------+
 
