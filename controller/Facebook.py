@@ -119,7 +119,23 @@ class Facebook():
                 # add treated on we_list
                 we_list.append(treat)
 
-        return we_list
+        work_education_and_location = {}
+
+        for i in range(len(we_list)):
+            test = str(we_list[i])
+            if test[0] != "&":
+                # split per : for treat data
+                test = test.split(":")
+                # insert atual location and hometown
+                if test[0] == " ":
+                    work_education_and_location.update({test[5]: test[4]})
+                    pass
+                # insert education and jobs
+                else:
+                    work_education_and_location.update({test[2] + " " + test[3]: test[1]})
+
+        return work_education_and_location
+
 
 
 
