@@ -58,14 +58,10 @@ Events
 https://facebook.com/name.profile-search.example/events
 +-------------------------------------------------------+
 
-
 +-------------------------------------------------------+
 Search post about company
 https://www.facebook.com/search/str/<name+of+company>/keywords_blended_posts
 +-------------------------------------------------------+
-
-
-
 
 """
 

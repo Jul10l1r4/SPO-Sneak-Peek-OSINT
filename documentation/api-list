@@ -25,4 +25,48 @@ List of API from Brazil search
 |https://developers.virustotal.com/v2.0/reference#api-responses                          |
 |witch api key: 086176161b18ee281fd2fecb9875545f87557f40b43579cd13034d71a39b63ad         |
 +----------------------------------------------------------------------------------------+
+|For facebook search                                                                     |
+|Profile search                                                                          |
+|https://facebook.com/<name.profile-search>                                              |
+|About                                                                                   |
+|https://facebook.com/<name.profile-search>/about                                        |
+|[*] overview                                                                            |
+|[*] work and education                                                                  |
+|[*] places he's lived                                                                   |
+|[*] contacts and basic info                                                             |
+|[*] family and relationships                                                            |
+|[*] details about example                                                               |
+|[*] life events                                                                         |
+|Friends                                                                                 |
+|https://facebook.com/<name.profile-search>/friends                                      |
+|* This topics can change *                                                              |
+|[*] All Friends                                                                         |
+|[*] Mutual Friends                                                                      |
+|[*] College                                                                             |
+|[*] High School                                                                         |
+|[*] Current City                                                                        |
+|[*] More                                                                                |
+|Likes                                                                                   |
+|https://facebook.com/<name.profile-search>/likes                                        |
+|Photos                                                                                  |
+|https://facebook.com/<name.profile-search>/photos                                       |
+|Videos                                                                                  |
+|https://facebook.com/<name.profile-search>/videos                                       |
+|CheckIns                                                                                |
+|https://facebook.com/<name.profile-search>/map                                          |
+|Sports                                                                                  |
+|https://facebook.com/<name.profile-search>/sports                                       |
+|Music                                                                                   |
+|https://facebook.com/<name.profile-search>/music                                        |
+|TV                                                                                      |
+|https://facebook.com/<name.profile-search>.example/tv                                   |
+|Movies                                                                                  |
+|https://facebook.com/<name.profile-search.example>/movies                               |
+|Books                                                                                   |
+|https://facebook.com/<name.profile-search>.example/books                                |
+|Events                                                                                  |
+|https://facebook.com/<name.profile-search.example>/events                               |
+|Search post about company                                                               |
+|https://www.facebook.com/search/str/<name+of+company>/keywords_blended_posts            |
++----------------------------------------------------------------------------------------+
 
