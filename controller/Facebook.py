@@ -70,8 +70,8 @@ from bs4 import BeautifulSoup
 
 class Facebook():
 
-    # Search information about profile
-    def about(self,profile):
+    # Search information about hometown, current city and jobs from facebook
+    def work_education_and_location(self,profile):
         # create headers
         req = urllib.request.Request(
             url="https://www.facebook.com/" + profile + "/about",
@@ -135,6 +135,33 @@ class Facebook():
                     work_education_and_location.update({test[2] + " " + test[3]: test[1]})
 
         return work_education_and_location
+
+    # Get profile picture, and returns on html format in str
+    def perfil_picture(profile):
+        # create headers
+        req = urllib.request.Request(
+            url="https://www.facebook.com/" + profile + "/about",
+            data=None,
+            headers={
+                'User-Agent': 'SPO - sneak peak OSINT https://github.com/victordequeiroz/SPO-Sneak-Peek-OSINT'
+            }
+        )
+
+        # connects on facebook and save untretreated data
+        with urllib.request.urlopen(req) as url:
+            # open html
+            url_dump = url.read()
+
+        # instance of beautifulsoup
+        soup = BeautifulSoup(url_dump, 'lxml')
+
+        # parse information on class="photoContainer"
+        data = soup.findAll("div", {"class": "photoContainer"})
+
+        profile_picture = str(data)
+        profile_picture = profile_picture.replace("[", "")
+        profile_picture = profile_picture.replace("]", "")
+        return profile_picture
 
 
 
