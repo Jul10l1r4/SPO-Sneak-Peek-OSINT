@@ -163,6 +163,45 @@ class Facebook():
         profile_picture = profile_picture.replace("]", "")
         return profile_picture
 
+    # Search information about likes
+    def likes(profile):
+        # create headers
+        req = urllib.request.Request(
+            url="https://www.facebook.com/" + profile + "/likes",
+            data=None,
+            headers={
+                'User-Agent': 'SPO - sneak peak OSINT https://github.com/victordequeiroz/SPO-Sneak-Peek-OSINT'
+            }
+        )
+
+        # connects on facebook and save untretreated data
+        with urllib.request.urlopen(req) as url:
+            # open html
+            url_dump = url.read()
+
+        # instance of beautifulsoup
+        soup = BeautifulSoup(url_dump, 'lxml')
+
+        # parse information on class="uiCollapsedList uiCollapsedListHidden uiCollapsedListNoSeparate pagesListData"
+        data_untreated = soup.findAll("div")
+
+        data_untreated = str(data_untreated)
+
+        data_untreated = data_untreated.replace("href", "*")
+        data_untreated = data_untreated.replace("</a>,", " ")
+        data_untreated = data_untreated.replace("\">", " : ")
+        data_untreated = data_untreated.split("<a")
+
+        # initialize data treated
+        data_treated = []
+
+        # show only links
+        for i in range(len(data_untreated)):
+            if "*=" in data_untreated[i] and not "class" in data_untreated[i] and not "<" in data_untreated[i]:
+                treat = str(data_untreated[i]).replace("*=\"", "")
+                data_treated.append(treat)
+
+        return data_treated
 
 
 
