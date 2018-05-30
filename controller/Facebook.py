@@ -70,8 +70,11 @@ from bs4 import BeautifulSoup
 
 class Facebook():
 
+    def __init__(self):
+        return self
+
     # Search information about hometown, current city and jobs from facebook
-    def work_education_and_location(self,profile):
+    def location_by_facebook(profile):
         # create headers
         req = urllib.request.Request(
             url="https://www.facebook.com/" + profile + "/about",
@@ -88,9 +91,6 @@ class Facebook():
 
         # instance of beautifulsoup
         soup = BeautifulSoup(url_dump, 'lxml')
-
-        # parse information on <div class="timelineLoggedOutPagelet">
-        # data_not_threated = soup.findAll("div", {"class":"timelineLoggedOutPagelet"})
 
         # work and education
         we_untreated = soup.findAll("div", {"class": "_6a _6b"})
@@ -112,14 +112,15 @@ class Facebook():
                 treat = treat.replace("\">", " : ")
                 treat = treat.replace("</a>", "")
                 treat = treat.replace("</span><div class=\"fsm fwn fcg ", " ")
-                treat = treat.replace(" : <div class=\"profileFriendsContent : <div class=\"profileFriendsText : <strong>",
-                                      "&")
+                treat = treat.replace(
+                    " : <div class=\"profileFriendsContent : <div class=\"profileFriendsText : <strong>",
+                    "&")
                 treat = treat.replace(" <a class=\"_39g5\" href=\"", " | ")
                 treat = treat.replace("<div class=\"_3-8w _50f8 ", " ")
                 # add treated on we_list
                 we_list.append(treat)
 
-        work_education_and_location = {}
+        location = {}
 
         for i in range(len(we_list)):
             test = str(we_list[i])
@@ -128,13 +129,10 @@ class Facebook():
                 test = test.split(":")
                 # insert atual location and hometown
                 if test[0] == " ":
-                    work_education_and_location.update({test[5]: test[4]})
+                    location.update({test[5]: test[4]})
                     pass
-                # insert education and jobs
-                else:
-                    work_education_and_location.update({test[2] + " " + test[3]: test[1]})
 
-        return work_education_and_location
+        return location
 
     # Get profile picture, and returns on html format in str
     def perfil_picture(profile):

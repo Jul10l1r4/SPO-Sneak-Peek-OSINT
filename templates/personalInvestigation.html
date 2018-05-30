@@ -107,6 +107,48 @@
          </li>
          <div class="divider"></div>
       </ul>
+
+ <div class="row">
+         <div class="col s9 offset-s3">
+            <div class="card horizontal">
+               <div class="card-stacked">
+                  <div class="card-content">
+                      <h4 class="center">P E R S O N A L  - I N V E S T I G A T I O N </h4>
+                     <h6 class="center">
+                        Select a single quick category for investigation or start a new project for save data on DB.
+                     </h6>
+
+                  </div>
+               </div>
+            </div>
+            <div class="col s12 blue-grey darken-4 white-text">
+               <div class="card-content blue-grey darken-4 white-text">
+                  <p>
+                  <h4><i class="material-icons">accessibility</i> Personal Information</h4>
+                  <form action="{{ url_for('personalInvestigation')}}" method="POST">
+                     <label for="profile_facebook">Insert the facebook id here, example on link https://facebook.com.br/queirozrhodes you need insert here "queirozrhodes" only. </label>
+                     <input name="profile_facebook" id="profile_facebook" type="text">
+                     <div>
+                        <ul class="collapsible blue-grey darken-4 white-text">
+                           <li>
+                              <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">face</i>Information by Facebook</div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span></span></div>
+                           </li>
+
+
+
+                        </ul>
+                     </div>
+               </div>
+               </form>
+               </p>
+         </div>
+
+
+
+
+
+
       <div class="col s4 m4"></div>
       <div class="fixed-action-btn">
          <a class="btn-floating btn-large tooltiped red ">
@@ -114,7 +156,6 @@
          </a>
          <ul>
             <li><a href="{{ url_for('insertKeys') }}" class="btn-floating tooltipped light-blue darken-4" data-position="bottom" data-delay="50" data-tooltip="Add social media keys"><i class="material-icons">vpn_key</i></a></li>
-            <li><a href="" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="Cadastrar usuário"><i class="material-icons">date_range</i></a></li>
             <li><a href="{{ url_for('exit') }}" class="btn-floating tooltipped grey darken-4" data-position="bottom" data-delay="50" data-tooltip="exit"><i class="material-icons">move_to_inbox</i></a></li>
          </ul>
       </div>

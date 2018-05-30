@@ -38,6 +38,7 @@ from controller import Whois
 from controller import CNPJ
 from controller import Jurisprudence
 from controller import Subdomain
+from controller import Facebook
 
 # spo is a instance of flask,
 # template_folder is a directory of contents html sources from view
@@ -59,7 +60,8 @@ cnpj = CNPJ.CNPJ()
 lawyer = Jurisprudence.Jurisprudence()
 # instance of subdomains
 subdomain = Subdomain.Subdomains()
-
+# instance of Facebook
+facebook = Facebook.Facebook
 
 # for timeout session on 2 minutes
 @spo.before_request
@@ -224,9 +226,26 @@ Function that is responsible for start a new Personal investigation.
 def personalInvestigation():
     # test if is authenticated
     if session['isAuthenticated'] == True:
+        if request.method == 'POST':
+            # for facebook crawler
+            profile_facebook = request.form.get('profile_facebook')
+            # get profile picture
+            foto_perfil = facebook.perfil_picture(profile_facebook)
+            # get likes
+            likes_by_facebook = facebook.likes(profile_facebook)
+            # get location by facebook
+            location_by_facebook = facebook.location_by_facebook(profile_facebook)
+
+
+
+
+
+
 
 
         return render_template("personalInvestigation.html")
+
+
 
 """
 +-------------------------------------------------+
