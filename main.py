@@ -230,20 +230,20 @@ def personalInvestigation():
             # for facebook crawler
             profile_facebook = request.form.get('profile_facebook')
             # get profile picture
-            foto_perfil = facebook.perfil_picture(profile_facebook)
+            photo_perfil = facebook.perfil_picture(profile_facebook)
             # get likes
             likes_by_facebook = facebook.likes(profile_facebook)
             # get location by facebook
             location_by_facebook = facebook.location_by_facebook(profile_facebook)
 
+            return render_template("personalInvestigation.html", photo_perfil=photo_perfil, likes_by_facebook=likes_by_facebook,location_by_facebook=location_by_facebook)
 
 
 
 
 
 
-
-        return render_template("personalInvestigation.html")
+        return render_template("personalInvestigation.html", photo_perfil='', likes_by_facebook='',location_by_facebook='')
 
 
 

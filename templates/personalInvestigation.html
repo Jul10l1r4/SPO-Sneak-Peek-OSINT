@@ -124,16 +124,17 @@
             <div class="col s12 blue-grey darken-4 white-text">
                <div class="card-content blue-grey darken-4 white-text">
                   <p>
-                  <h4><i class="material-icons">accessibility</i> Personal Information</h4>
+                  <h4><i class="material-icons">accessibility</i> Facebook Information</h4>
                   <form action="{{ url_for('personalInvestigation')}}" method="POST">
                      <label for="profile_facebook">Insert the facebook id here, example on link https://facebook.com.br/queirozrhodes you need insert here "queirozrhodes" only. </label>
                      <input name="profile_facebook" id="profile_facebook" type="text">
                      <div>
                         <ul class="collapsible blue-grey darken-4 white-text">
                            <li>
-                              <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">face</i>Information by Facebook</div>
-                              <div class="collapsible-body blue-grey darken-4 white-text"><span></span></div>
+                                <div class="collapsible-header blue-grey darken-4 white-text modal-trigger" href="#facebook_search_view"><i class="material-icons">class</i>Show pfacebook informations</div>
+
                            </li>
+
 
 
 
@@ -143,9 +144,31 @@
                </form>
                </p>
          </div>
+ <!-- View facebook search -->
+<div id="facebook_search_view" class="modal">
+     <div>
+                        <ul class="collapsible blue-grey darken-4 white-text">
+                            <div>
+                        <ul class="collapsible blue-grey darken-4 white-text">
+                           <li>
+                              <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">face</i>Profile Picture</div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ photo_perfil }}</span></div>
+                           </li>
+                           <li>
+                              <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">email</i>Facebook Page likes</div>
+                              {% for i in likes_by_facebook %}
+                               <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ i }}</span></div>
+                               {% endfor %}
+                           </li>
+                        </ul>
+                            </div>
 
 
 
+                        </ul>
+                     </div>
+
+         </div>
 
 
 
@@ -166,5 +189,6 @@
       <!-- Compiled and minified JavaScript -->
       <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
       <script src="{{ url_for('static', filename='js/button.js') }}"></script>
+     <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
    </body>
 </html>
