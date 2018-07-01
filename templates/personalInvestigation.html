@@ -152,7 +152,7 @@
                         <ul class="collapsible blue-grey darken-4 white-text">
                            <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">face</i>Profile Picture</div>
-                              <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ photo_perfil }}</span></div>
+                              <div class="collapsible-body blue-grey darken-4 white-text"><span>{{ photo_perfil|safe }}</span></div>
                            </li>
                            <li>
                               <div class="collapsible-header blue-grey darken-4 white-text"><i class="material-icons">email</i>Facebook Page likes</div>
@@ -162,9 +162,6 @@
                            </li>
                         </ul>
                             </div>
-
-
-
                         </ul>
                      </div>
 
