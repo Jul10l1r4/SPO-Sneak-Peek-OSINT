@@ -23,7 +23,7 @@ journalists, curious and whoever you want, SPO is opensource and free!
 
 ![captura de ecra de 2018-05-08 15-14-57](https://user-images.githubusercontent.com/31081984/39775169-72cd9560-52d3-11e8-8ba0-523dca402f9d.png)
 
-![captura de ecra de 2018-05-08 15-24-09](https://user-images.githubusercontent.com/31081984/39775365-08f53980-52d4-11e8-9291-ac890cb29e0f.png)
+![print2](https://user-images.githubusercontent.com/31081984/54779358-bbb85000-4bf5-11e9-88a9-52a625fa519e.png)
 
 
 Projected and Developed by @Victor_de_Queiroz
