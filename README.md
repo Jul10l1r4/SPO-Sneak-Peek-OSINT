@@ -11,6 +11,9 @@ other license different than GPLv2.
 ɃTC = 1FtBj9QbT7gDcxSCygTnUop4N3bd75bwRZ  |
 ɃCH = qr6gn0r20p9s9kjm5yuvqw53mhmzx87q0vecqn6xhj |
 
+IRC for development
+http://6cd7qka6fo6aps2e.onion/ 
+Room: #OSINT
 
 I'm a security researcher and python developer.
 I created this software because I wanted study about OSINT.
