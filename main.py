@@ -19,7 +19,7 @@ SPO is a opensource code, please don't use this with
 other license different than GPLv2.
 
 Developed by Victor de Queiroz
-Contact: victordequeiroz37@gmail.com
+Contact: CATx003@protonmail.com
 
 +------------- ♥ For donations ♥ -----------------+
 |                                                 |
