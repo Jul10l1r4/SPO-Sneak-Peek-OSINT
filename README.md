@@ -23,8 +23,13 @@ journalists, curious and whoever you want, SPO is opensource and free!
 
 ![captura de ecra de 2018-05-08 15-14-57](https://user-images.githubusercontent.com/31081984/39775169-72cd9560-52d3-11e8-8ba0-523dca402f9d.png)
 
-![print2](https://user-images.githubusercontent.com/31081984/54779358-bbb85000-4bf5-11e9-88a9-52a625fa519e.png)
+![print2](https://user-images.githubusercontent.com/31081984/54780231-f8854680-4bf7-11e9-8370-b2b9456e3a29.png)
+
 
 
 Projected and Developed by @Victor_de_Queiroz
-Contact: victordequeiroz37@gmail.com
+Contact: CATx003@protonmail.com
+
+IRC for development
+http://6cd7qka6fo6aps2e.onion/ 
+Room: #OSINT
